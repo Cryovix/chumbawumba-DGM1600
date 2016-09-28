@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2016 by anonymous (http://jsbin.com/veganodogu/1/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+
+<script id="jsbin-javascript">
+var monster1 = {type: "Werewolf", skin: "fur", killedWith: "silver"};
+//monster1, 2, and 3 are objects.
+var monster2 = {type: "Vampire", skin: "necrotic", killedWith: "sunlight"};
+//type, skin, and killedWith are properties of the objects.
+var monster3 = {type: "Dragon", skin: "scales", killedWith: "magic"};
+
+monster1.activity = "Full Moon";
+monster2["activity"] = "Night";
+monster3.activity = "Twilight";
+//Here are two methods of adding properties to existing objects.
+
+delete monster1.killedWith;
+delete monster2["killedWith"];
+//Here are two methods for deleting properties from existing objects.
+
+var monsters = [monster1, monster2, monster3];
+//This adds the monster objects to an array.
+
+var findMonster = function(name,list){
+  for(var i = 0; i < list.length; i++){
+    if(list[i].type === name){
+      console.log("This creature is active at " + list[i].activity + ".");
+    }
+  }
+};
+//This is a function that searches the array objects for specific information.
+
+findMonster("Dragon", monsters);
+//This calls the function that searches the array objects.
+</script>
+</body>
+</html>
