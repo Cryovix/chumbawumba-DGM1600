@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2016 by anonymous (http://jsbin.com/xogezibuyu/1/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+	<head>
+		<title>Text Game</title>
+		<!--Importing a Google Font-->
+		<link href="https://fonts.googleapis.com/css?family=Yatra+One" rel="stylesheet">		<!--Making the page less of an eyesore-->
+		<style>
+			body {
+				background-color:black;
+				color:white;
+				font-family: 'Yatra One', cursive;
+			}
+		</style>
+	</head>
+	<body>
+		<script>
+          
+          //Gameover function
+			
+			function breakUniverse (userInput) {
+				alert("By altering the acceptable methods of action you have inadvertantly broken the rules that govern existence. You are no more.");
+				
+				document.write("<h1>You broke the universe. Congratulations!</h1>");
+			}
+          //Secret Ending
+            function becomeDiety () {
+              alert("Well this is awkward...you figured it out it seems. Congratulations you are the head honcho around here. If you have any questions or concerns feel free to ask me but I think you'll get the hang of things soon. Please don't destroy me! I was just doing my job!!!");
+              
+              document.write("<h1>Turns out you're the ruler of all creation! Why waste your time playing a game?</h1>");
+            }
+          
+          //Character creation
+          
+			var playerName = prompt("Name your character");
+			
+			var playerGender = prompt("Is " + playerName + " a male or female?").toLowerCase();
+			
+			if (playerGender === "male") {
+				playerGender = ["boy", "man", "he", "him", "his", "lad", "his", "sir"];
+				begin();
+			} else if (playerGender === "female") {
+				playerGender = ["girl", "woman", "she", "her", "her", "lass", "hers", "miss"];
+				begin();
+			} else if(playerGender === "god", "diety"){
+              becomeDiety();
+            } else {
+				breakUniverse(playerGender);
+			}
+			
+			//-------Game starts here---------
+          
+          function begin() {
+            document.write("<p>They always told me I'd live to regret my decision. They warned me at every opportunity and every turn but did I listen?...I probably should have...</p>");
+            
+            alert("Oh...so you've come eh? They told me you would but I didn't believe them. Honestly why would anyone believe them? Perhaps it's for the best but...well you're here now aren't you? You likely won't make it but perhaps my story can help you.\n\n My name is " + playerName + " and when I first came to this place I was nothing but a " + playerGender[0] + " but I had hope. It doesn't need to be said but you're currently standing in the Forgotten Shores where, oddly enough, there are no large bodies of water.");
+            
+            forgottenShores();
+          }
+          
+          function forgottenShores() {
+          alert("In this wonderful place myths, legends, tall tales, and stories are real, literally. Coincidentally that is also this places biggest flaw. See when I first arrived here I didn't pay attention as you likely are doing now and ended up at this amazing looking hotel. It must have been 100 stories tall and each floor was both a different color and design than the floors below. Fascinated by the place I walked right through the front door not bothering to read signs or listen to what was happening around me.\n\n Once inside I walked right up to the service desk and found an unusually tall man standing there watching me. Wordlessly he reached into a cupboard and pulled out a key which he handed to me and then pointed to an elevator.");
+            
+          alert("I couldn't believe my luck! Being given a key to the coolest looking place I'd ever seen! I bolted for the elevator and found some other guy, also unusually tall and silent, manning the thing. He pushed a button and away the elevator went. I checked my key to find one side had the number thirteen etched into it and the other side had a picture of a wolf. The elevator seemed to stop as soon as I finished looking over the key, which was odd, and once again tall guy, whom I mentally named Lars, just pointed out of the elevator. Taking a deep breath I stepped out into a long hallway.\n\n The lights on this floor were a bit crazy. They gave off a silvery gleam that made the depictions of creatures on the wall move. Still I was so excited I rushed down the hallway found a door with both a 13 and a wolf on it and I went to unlock it. As I touched the door it began shaking violently and I could hear howling and snarling from the other side.");
+            
+            var openOrRun = prompt("I jumped away from the door surprised unable to contain my horror at the sounds coming from the door. Despite the terror and dread that filled me I noticed the door held since it hadn't been unlocked. I'm not sure what came over me but I couldn't control the urge to...\n*unlock the door.\n*run away.").toLowerCase();
+            
+            if(openOrRun === "unlock the door" || openOrRun === "unlock") {
+              unlockDoor();
+            } else if(openOrRun === "run away" || openOrRun === "run"){
+              runAway();
+            } else {
+              breakUniverse();
+            }
+            
+          }
+          
+          function unlockDoor(){
+            alert("Now I know what you're thinking. Why would anyone want to open a door that seemed to be keeping a savage beast locked up? Well anyone with an ounce of curiosity would! I unlocked that door feeling excited! As soon as I did so the noises and shaking stopped. I pocketed my key again and then steeled myself as I grabbed the door-handle, twisted and yanked it open!\n\n Nothing was there...I walked in flipped on a light and found myself in what appeared to be a room taken straight out of a log cabin. The floors, walls, ceilings, and furnishings were all made of wood. Some of the pieces had some intricate work put into them too! I looked everywhere: In things, under things, around things, my pockets...there was no animal in the room. Oddly crestfallen I closed the door to my room and sat down on the bed to try and puzzle out what happened. After several minutes spent in futility I decided to explore the room.");
+            
+            var keepOrLeave = prompt("During the second round of room exploration I noticed a lot more about my room. First there was a door opposite the entrance to the room but nothing was on the other side. Second I found an EXTREMELY large bone in the closet. It was like a human femur or something and it was just sitting there on the floor. Further searching of the room turned up some other small oddities but nothing that was worth noting. Finally I concluded I wanted to see more of the hotel so I headed for the door but I paused at the closet. Almost as an impulse I decided to...\n*take the bone.\n*leave the bone.");
+            
+            if(keepOrLeave === "take the bone" || keepOrLeave === "take bone" || keepOrLeave === "take") {
+              boneTote();
+            } else if(keepOrLeave === "leave the bone" || keepOrLeave === "leave bone" || keepOrLeave === "leave"){
+              emptyHanded();
+            } else {
+              breakUniverse();
+            }
+            
+          }
+          
+          function boneTote(){
+            
+            
+          }
+          
+          function emptyHanded(){
+            
+            
+          }
+          
+          function runAway(){
+            
+          }
+          
+        </script>
+</body>
+</html>
