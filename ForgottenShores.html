@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2016 by anonymous (http://jsbin.com/lusejolomi/1/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+	<head>
+		<title>Text Game</title>
+		<!--Importing a Google Font-->
+		<link href="https://fonts.googleapis.com/css?family=Yatra+One" rel="stylesheet">		<!--Making the page less of an eyesore-->
+		<style>
+			body {
+				background-color:black;
+				color:white;
+				font-family: 'Yatra One', cursive;
+			}
+		</style>
+	</head>
+	<body>
+		<script>
+          
+          //Gameover function
+			
+			function breakUniverse (userInput) {
+				alert("By altering the acceptable methods of action you have inadvertantly broken the rules that govern existence. You are no more.");
+				
+				document.write("<h1>You broke the universe. Congratulations!</h1>");
+			}
+          
+          //Secret Ending
+            function becomeDiety () {
+              alert("Well this is awkward...you figured it out it seems. Congratulations you are the head honcho around here. If you have any questions or concerns feel free to ask me but I think you'll get the hang of things soon. Please don't destroy me! I was just doing my job!!!");
+              
+              document.write("<h1>Turns out you're the ruler of all creation! Why waste your time playing a game?</h1>");
+            }
+          
+          //Character creation
+          
+			var playerName = prompt("Name your character");
+			
+            var inventory = [];
+          
+			var playerGender = prompt("Is " + playerName + " a male or female?").toLowerCase();
+			
+			if (playerGender === "male") {
+				playerGender = ["boy", "man", "he", "him", "his", "lad", "his", "sir"];
+				begin();
+			} else if (playerGender === "female") {
+				playerGender = ["girl", "woman", "she", "her", "her", "lass", "hers", "miss"];
+				begin();
+			} else if(playerGender === "god", "diety"){
+              becomeDiety();
+            } else {
+				breakUniverse(playerGender);
+			}
+			
+			//-------Game starts here---------
+          
+          function begin() {
+            document.write("<p>You're standing in the middle of a dirt road hedged by trees. You can see a large stone building in the distance and there is a sign on the right side of the road.</p>");
+            
+            alert("Oh...so you've come eh? They told me you would but I didn't believe them. Honestly why would anyone believe them? Perhaps it's for the best but...well you're here now aren't you? You likely won't make it but perhaps my story can help you.\n\n My name is " + playerName + " and when I first came to this place I was nothing but a " + playerGender[0] + " but I had hope. It doesn't need to be said but you're currently standing in the Forgotten Shores where, oddly enough, there are no large bodies of water.");
+            
+            forgottenShores();
+          }
+          
+          
+          
+          
+          
+          
+        </script>
+      <script src="jquery.min.js"></script>
+</body>
+</html>
+
+
+
+<!-- Generic Code storage -->
+<!--
+  
+  
+function test(){
+            alert("");
+            
+            var test = prompt("");
+            
+            if(test === "" || test === "" || test === "") {
+              ();
+            } else if(test === "" || test === "" || test "") {
+              ();
+            } else {
+              breakUniverse();
+            }
+            
+          }
+
+
+
+function (){
+            alert("");
+            
+            var  = prompt("");
+            
+            if( === "" ||  === "" ||  === "") {
+              ();
+            } else if( === "" ||  === "" ||  "") {
+              ();
+            } else {
+              breakUniverse();
+            }
+            
+          }
+
+
+
+
+
+-->
