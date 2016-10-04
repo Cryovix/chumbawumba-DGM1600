@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2016 by anonymous (http://jsbin.com/pagihefuza/1/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+	<head>
+		<title>Great Game Fantastic!</title>
+		<!--Importing a Google Font-->
+		<link href='http://fonts.googleapis.com/css?family=Josefin+Sans:600' rel='stylesheet' type='text/css'>
+		<!--Making the page less of an eyesore-->
+		<style>
+			body {
+				background-color:black;
+				color:white;
+				font-family: 'Josefin Sans', sans-serif;
+			}
+		</style>
+	</head>
+	<body>
+		<script>
+		
+			//Gameover function
+			
+			function galacticSpider (userInput) {
+				alert("The powers that be do not understand the meaning of \"" + userInput + "\". You have been killed by a galactic spider.");
+				
+				document.write("<h1>You were eaten by a galactic spider.</h1>");
+			}
+
+			//Initial character creation
+			
+			var playerName = prompt("Name your character");
+			
+			var playerGender = prompt("Is " + playerName + " a male or female?").toLowerCase();
+			
+			if (playerGender === "male") {
+				playerGender = ["boy", "man", "he", "him", "his", "lad", "his", "sir"];
+				gameStart(); //Starting game (Line 45)
+			} else if (playerGender === "female") {
+				playerGender = ["girl", "woman", "she", "her", "her", "lass", "hers", "miss"];
+				gameStart(); //Starting game (Line 45)
+			} else {
+				galacticSpider(playerGender);
+			}
+			
+			//-------Game starts here---------
+			
+			function gameStart() {
+				
+				document.write("<p>Day 1<p>");
+				
+				document.write("<p>My name is " + playerName + ", and this is my diary. Tomorrow, I'm boarding the Vailing Express. I'm excited, but a little scared, too. I just hope I don't get mugged on the way there. Write more later!");
+				
+				alert("You are " + playerName + ", a " + playerGender[0] + " on the cusp of " + playerGender[1] + "hood. You have decided it's time to seek out your fortune in the world, and to do so, have bought a ticket to the Vailing Express, a train that covers the entire continent.");
+				
+				alert("You're not sure what you're going once you're on the train, or even where you'll get off, but as the grand locomotive pulls into the station with a whistle and a puff of steam, you can only feel that your future is bright.\nThe train screeches to a halt, and people begin to board. Ticket in hand, you follow the line, and show it to the man at the door. \"Welcome aboard, " + playerGender[5] + ",\" he grins, and you step onto the train.");
+				
+				roomUnpack();
+				
+				//Dining car branch removed due to deadline & time limitations
+				
+				//var roomOrDining = prompt("You find yourself in the entry car, unsure what to do next. Looking at your ticket, you see your room number stamped on one corner. You could go find it, and start to unpack. On the other hand, you see a group of people heading for the dining car, and you can smell the fresh lasagna... After a moment's consideration, you pick the... \n~Dining car\n~Room").toLowerCase();
+				
+				//if (roomOrDining.search("dining") != -1) {
+				//	alert("Test sucessful! DINING AWAY");
+				//	diningCar();
+				//} else if (roomOrDining.search("room") != -1) {
+				//	roomUnpack();
+				//} else {
+				//	galacticSpider(roomOrDining);
+				//}
+				
+			}
+			
+			function roomUnpack() {
+				
+				alert("You find yourself in the entry car, unsure what to do next. Looking at your ticket, you see your room number stamped on one corner.\nMind made up, you head to the back of the train to seek it out. You find it in the second to last car, behind a solid door with the number \"14\" nailed above it. You open the door, and find a small yet cozy room, with a bed against one wall, a washing basin against the other, and railed shelves against the ceiling where your suitcase has already been placed.");
+
+				alert("A single lamp keeps the room well lit, along with a window that shows the station. There is a tiny fold-out desk under the window, and a fold-up chair hung next to it on the wall. A gold key with the number 14 engraved on it hangs from a hook by the bed. You take it and stuff it in your pocket.")
+
+				var ratsOrNot = prompt("You heave your suitcase down with a grunt, and start to unpack. Soon after, you hear footsteps down the hall, and a head pokes into your room. \"Hello!\" a girl says, right as you're about to pull out...\n~A brush\n~Your collection of dead rats").toLowerCase();
+				
+				if (ratsOrNot.search("collection") != -1 || ratsOrNot.search("rats") != -1) {
+					deadRats();
+				} else if (ratsOrNot.search("brush") != -1) {
+					meetDana();
+				} else {
+					galacticSpider(ratsOrNot);
+				}
+				
+				
+			}
+			
+			function deadRats() {
+				
+				alert("You freeze with the cage half in and half out of your bag. The girl sees your collection, and her eyes go wide. Before you can do anything, she opens her mouth, and lets out an ear-shattering scream. \"RATS! DEAD RATS! AAAAAAIIIIIIIGGGGHHHH!!!!\"");
+				
+				alert("People come running, and you recover your senses. You shove the rats back into your suitcase as someone official-looking storms in. \"Did someone say rats?\"\n\"..." + playerGender[2] + "...rats in " + playerGender[4] + " suitcase...\" The girl gasps. The man walks up, and flips open your luggage, then recoils in disgust. He turns to you, scowling.\n\"Look here, " + playerGender[0] + ", you can't bring dead rats on this train!\"");
+				
+				alert("You try to protest, but he grabs your shoulder in one hand, and your suitcase in the other, then marches you out of the room to the front car. He pushes you off the train, and you stumble onto the cobblestones as he chucks your suitcase after you.");
+				
+				var jumpOrStay = prompt("Dazed, you turn around and realize the train is about to leave without you. The man shuts the door, and after a long whistle, it starts to pull out of the station. On the last car, you see a place where you could grab onto and climb back onto the train, but it's a long jump, and the train is starting to go faster... \n~Jump\n~Stay").toLowerCase();
+				
+				if (jumpOrStay.search("jump") != -1) {
+					jumpedOn();
+				} else if (jumpOrStay.search("stay") != -1) {
+					stayedHome();
+				} else {
+					galacticSpider(jumpOrStay);
+				}
+			}
+			
+			function stayedHome() {
+				
+				alert("You decide it would be better to play it safe, and watch as the train disappears around the bend. You then take your suitcase, and make the long walk home, where you resign youself to the family business of making butter for the rest of your life. The End.");
+				
+				document.write("<p>Day 2<p>");
+				
+				document.write("<p>I was kicked off the train because they found my dead rats! Life is so unfair! I've come back home, and now I'm making butter again. At least mom and dad are paying me this time. I just wish this all could have ended in a better way...</p>");
+				
+				document.write("<h1>You became a butter maker.</h1>");
+			}
+			
+			function jumpedOn() {
+				
+				//Picks randomly between 1 & 0, to determine whether you die or not in the following if statement.
+				var jumpSurvivalChance = [Math.floor(Math.random() * 2)];
+				
+				if (jumpSurvivalChance == 0) {
+					
+					alert("You decide to take your chances, and give a running leap to grab onto the train. You seize the bar hanging off, and hold on with all your might, trying to pull yourself up. You get one foot onto the small platform, but as you put weight on it, you slip, and lose your grip. The world blurs right before you hit the ground, and see nothing more.");
+					
+					document.write("<h1>You were killed trying to jump onto a train.</h1>");
+					
+				} else {
+				
+					alert("You decide to take your chances, and give a running leap to grab onto the train. You seize the bar hanging off, and hold on with all your might, trying to pull yourself up. You get one foot onto the small platform, and you nearly slip as you put weight on it, but your grip is sure, and you manage to pull yourself up to safety.");
+					
+					alert("You settle down crosslegged in front of the door as the train pulls out of the station, and soon the countryside is whizzing past. You lean back, enjoying the wind and the afternoon air, though you do wish you could have brought your luggage. Your thoughts turn to the man who threw you off the train, and you wonder why he couldn't have just tossed the rats instead of you and your suitcase.");
+					
+					var foodNowOrNight = prompt("Shrugging it off, you shut your eyes, only to realize your stomach is aching with hunger. You remember exactly where the dining car is, but getting there could be difficult now that you're not supposed to be here... Unless you waited until night time. Your stomach growls, and you decide the best time to go would be...\n~Now\n~Night").toLowerCase();
+					
+					if (foodNowOrNight.search("now") != -1) {
+						foodNow();
+					} else if (foodNowOrNight.search("night") != -1) {
+						foodNight();
+					} else {
+						galacticSpider(foodNowOrNight);
+					}
+					
+				}
+			}
+			
+			function foodNow() {
+				
+				alert("Deciding you can't wait another minute, you stand up, and go inside the train. You find your way through the cars, keeping your head down as you pass other passengers. You make it to the dining car, and find some of the lasagna still left. You grab a plate, and scoop it up, then sit down and start eating as fast as you can, keeping an eye out for the guy who threw you off the train.");
+				
+				alert("Finished, you abandon the plate, and hightail it back to the end of the train. As you enter the second to last car, the man who threw you off comes around the corner. You freeze, and the two of you stare at each other for a moment, then he storms up to you.\n\"How did you get back on here?!\"\n\"I jumped.\" You say, \"You're lucky I'm not dead.\"");
+				
+				alert("The man glances around, then comes down to your eye level, and you realize he's not much older than you. \"Look, you violated our policies. If I didn't throw you off, I could've lost my job.\"\n\"Well sorry,\" You say, folding your arms, \"But if I go home, I'll spend the rest of my life making butter.\""); 
+				
+				alert("He studies you for a long time, then sighs. \"Fine. But if you're going to stay, you're going to have to make yourself useful. Come on.\"\nHe stands up, and you follow him to the boiler room. Another man is leaning on a shovel over a pile of coal, wiping his brow.\n\"Enson, I've got someone to help you here.\"");
+				
+				var workOrSlack = prompt("The coal man looks at you, seeming to size you up. \"Oh aye?\" he says, \"Well, long as you can lift a shovel I suppose. I could use a break anyway.\"\nThe shovel is thrust into your hands, and you turn to the man who threw you off. \"I'll come check on you this evening.\" he says, tipping his hat, and disappearing out the door. You look to the coal man, but he's already turned his back. Finally, you look at the huge mound of coal. It's enormous, and you decide the only thing you can do is...\n~Work\n~Slack").toLowerCase();
+				
+				if (workOrSlack.search("work") != -1) {
+					coalWork();
+				} else if (workOrSlack.search("slack") != -1) {
+					coalSlack();
+				} else {
+					galacticSpider(workOrSlack);
+				}
+			}
+			
+			function coalWork() {
+				
+				alert("Realizing there's only one thing for it, you set your jaw, and get to work. The shoveling is hard, and soon you're sweating over the hot furnace. As you work, the afternoon bleeds into violet, and before long, your muscles are aching. The coal pile has shrunk considerably, and you lump the last bit in as a cool evening breeze comes in through the window, easing the heat. You set the shovel aside with a small sigh of accomplishment, and shake out your arms.");
+				
+				alert("The man who threw you off comes in as the sun sinks below the running horizon. \"So, how is it going in here-\" he cuts off, and stares. After a moment, he walks over to where the pile of coal used to be, and looks at you.\n\"You did all of this?\"\nYou nod. The coal man stands up and claps you on the back. \"Aye, this " + playerGender[5] + " here is one of the hardest workers I've ever seen!\"");
+				
+				alert("\"Really? Well maybe we can speak to the conductor on your behalf,\" the man who threw you off says, \"So long as there are no more rats. My name is James, by the way.\"\n\"" + playerName + ".\"\n\"Welcome aboard the Vailing Express, " + playerName + ".\" James says, smiling, and you can't help but smile back.");
+				
+				alert("And so, you become part of the controlled chaos that is running the Vailing Express. Every day is an adventure, and you find close friendship with James, the coal man, and even the stuffy old conductor. You see the world, and explore bizarre and exciting places, meet all sorts of people, all without having to leave the train. The years go by, and you can't imagine a better life than that on the train you now call home. The End.");
+				
+				document.write("<p>Day 2<p>");
+				
+				document.write("<p>Dear Diary,</p>");
+				
+				document.write("<p>You won't believe what happened today! First they found my collection of dead rats, and I thought I was done for, but then when they threw me off the train, I jumped back on again. The man who threw me off found me after I filched some lasagna, and I ended up shovelling coal. I did such a good job though that they've offered to let me stay on the train, and they even talked to the conductor about it. He seemed a bit scary at first, but when James and I made a joke when we were leaving, I thought I saw him smiling out of the corner of my eye, and I think things are going to be all right. Maybe even great! I'll write more soon!</p>");
+				
+				document.write("<p>--" + playerName + "</p>");
+				
+				document.write("<h1>You became employed on the Vailing Express.</h1>");
+			}
+			
+			function coalSlack() {
+				
+				alert("Quietly, you set the shovel aside, and stand in the corner. The coal man looks at you for a moment, then grumbles, and takes up his shovel again, muttering about \"no good layabouts\". You try to look innocent as he gets to work, and don't meet his gaze for a long time. Eventually the sun sets and standing by the window you can enjoy a cool evening breeze.");
+				
+				alert("Grinning into the wind, you hear someone come in behind you. You turn around to find the man who threw you off in the doorway. He looks between you and the coal man. \"Well, how did it go?\"\n\"Go?\" the coal man growls, \"That " + playerGender[5] + " did nothing but stand there the whole time. Most useless lump I've ever seen.\"\nThe man who threw you off looks to you with narrowed eyes. \"I see.\" He walks over, and speaks quietly. \"I'm afraid you're going to get off at the next stop.\"");
+				
+				alert("You protest, but it's no use. The train comes to the next station in the middle of the night, and sure enough, the coal man and the man who threw you off personally see that you get off the train, and don't get back on before the train pulls out and is gone. Suddenly you find yourself in a dark station, with the few others who got off off. None of them pay you any heed, and you feel overwhelmingly alone.");
+				
+				alert("You find a corner to curl up and sleep in, and when morning comes, you find that you're in a small town with nowhere to find work. You resort to begging, and manage to scrape by that way for a few days, which turn into a few months, which stretch into a year, then two. Eventually, you become the ragged " + playerGender[0] + " on the street who everyone takes pity on, but no one knows how to help. Your life slips between your fingers, and you can only wonder if it could have ended another way.");
+				
+				document.write("<p>Day 2<p>");
+				
+				document.write("<p>They threw me off the train! First they found my collection of dead rats, and chucked me off, but I jumped back on. Then the man who threw me off found me, and tried to get me to shovel coal, but I didn't, so he threw me off again. I'm all alone now, and I don't know what to do... I might have to rip out the pages I've written on and sell this book for food. If only I'd done things differently, maybe things could have been better... I have to go now.</p>");
+				
+				document.write("<p>--" + playerName + "</p>");
+				
+				document.write("<h1>You became a beggar.</h1>");
+			}
+			
+			function foodNight() {
+				alert("Deciding it would be better to not attract attention, you sit back and wait for the sun to set. The hunger grows, but you ignore it. At long last the sun sinks below the horizon, and night falls in earnest. Stiff, you stand up, and creep back onto the train. It's quiet save for the sound of the wheels and the rails, and the lights are dim to save fuel. You find the dining car with ease, and enter it, only to find a tall man facing away from you leaned over the leftover lasagna.");
+				
+				alert("He lifts his head slightly as your gaze lands on him, and before you can think he turns around to look at you. \"What are you doing here?\" He asks. You keep your head down, and make your way over to the lasagna. \"Just need some food.\" You murmer, and grab a plate. You can feel him looking at you as you grab some nasty old lasagna, and the back of your neck prickles.");
+				
+				alert("Unnearved, you look up at him. The shadows of the lamplight fall eerily over his face, and he  studies you closely. \"You're the one they threw off the train. I thought I saw you climbing back on as we were leaving. Dead rats, wasn't it?\"\nYou nod mutely.\n\"Well,\" he says, \"perhaps we can help each other. I've been looking for someone to help me in my work, and you're going to need a place to hide.\"");
+				
+				var keyOrNot = prompt("\"What kind of work?\" you ask. The man lets out a quiet laugh, \"Let's see if you're the kind of person I'm lookng for first. If I were to tell you I needed a symbol - something that represents safety and is deeply connected to this train, something preferably metal, could you get me what I needed?\"\nYou think for a moment...").toLowerCase();
+				
+				if (keyOrNot.search("key") != -1) {
+					giveKey();
+				} else {
+					noKey();
+				}
+				
+				
+			}
+			
+			function noKey() {
+				
+				alert("You shrug. The man sighs and stands up. \"Pity.\"\n He leaves you alone in the dining car, and you absently stick your hand in your pocket. Your fingers close on the room key the man who threw you off failed to take. It clicks in your head, and you look to where the man went, but he's already gone.");
+				
+				alert("Suddenly alone again, you start to feel seriously creeped out. Just then, the train jerks, and slows to a halt. Out the window, you can see a station and a small town. In a flash you make up your mind, and decide to get off the train. You hurry to the car where you got on, and hear a small commotion behind you of other passengers getting off as well.");
+				
+				alert("You slip off the train, and into the night. The station is dark, but somehow you feel safer now that you're not on the same train as that man. Tired, you walk into a corner, curl up, and fall asleep. Your dreams are haunted by the man and his shadowed face, and you are shaken awake.");
+				
+				alert("You burst into the daylight station, grabbing for whoever woke you up. \"Hey! Easy there!\" A woman cries, backing away from your flailing limbs. You sit up, relieved to be out of the dream, and open your mouth to ask where you are, only to realize you can no longer speak. Bewildered, you leap to your feet. The woman starts to talk to you, but you ignore her, looking at the key dangling from the string in your hand.");
+				
+				alert("In an instant, your life becomes clear, and you realize how little you truly understand of the universe. Sticking the key back into your pocket, you set off to seek ultimate truth and the man who stole your voice. Weeks fly by, and stories of you spread through the land. Soon, everyone has room in their home for the silent " + playerGender[0] + " and " + playerGender[4] + " magic key.");
+				
+				alert("You spend years searching, but you never find the man who took your voice. As you become old and grey, though, you realize it doesn't matter. When you die peacefully in your sleep at the age of 98, you and your legend are remembered in books and poetry for hundreds of years to come. The End.");
+				
+				document.write("<h1>You became an urban legend.</h1>");
+				
+			}
+			
+			function giveKey() {
+				
+				alert("You suddenly remember the key you found when you first got on the train. You stick your hand in your pocket, and find it still there. You pull it out and hold it up in front of the man. \"Like this, you mean?\"\nThe man looks at it for a long time. \"That's exactly what I mean.\" He waves his hand in front of you, and you feel a buzz of electricity in the air. \"Yes...\" he says, \"You're different from the rest of the people on this train.\" He stands up, \"Come, you should meet my colleagues.\"");
+				
+				alert("The next thing you know, you're following him out of the dining car, and into the sleeping cars. The one he stops in is much fancier than yours, and he knocks on a door marked '27'. It opens a crack, and you can see an eyeball looking at you. \"Oh, Matthew,\" the person says, and opens the door all the way. You and Matthew go in.");
+				
+				alert("Looking around, you see the room is much bigger than the one you had. There are two other people inside, both in strange black robes trimmed in red. There are old books and odd-smelling candles on every table, and one of the robed people just finished painting a rune on the wall. The look at you and frown. \"Who's this?\"");
+				
+				var magicOrNot = prompt("\"This,\" Matthew says, \"May be our newest acolyte.\" He turns to you. \"What's your name, " + playerGender[0] + "?\"\n\"" + playerName + ",\" you say.\n\"Well, " + playerName + ", my name is Matthew Crandall, and I would like to extend an invitation to you to join my acolytes and study the dark arts of magic. We've been looking for someone new, and I think you could do very well indeed with us.\"\nYou stare, dumbfounded.\n~Yes\n~No").toLowerCase();
+				
+				if (magicOrNot.search("yes") != -1) {
+					darkMagic();
+				} else if (magicOrNot.search("no") != -1) {
+					darkDeath();
+				} else {
+					galacticSpider(magicOrNot);
+				}
+				
+			}
+			
+			function darkDeath() {
+				
+				alert("The more you look around, the more you wish you'd never come in here. You violently shake your head, and look to the door, but find it closed. Matthew sighs. \"Well, that's a shame. I'm terribly sorry, " + playerName + ".\" You look at him right as he claps his hands. Darkness covers your eyes, and a freezing chill comes over you. There is a terrible sensation of falling, and you see nothing more.");
+				
+				document.write("<h1>You were killed by the great void.</h1>");
+			}
+			
+			function darkMagic() {
+				
+				alert("You aren't sure whether it was excitement or sheer terror that made you agree, but you suddenly find yourself nodding. Matthew smiles, \"Good choice, " + playerName + ", good choice.\"");
+				
+				document.write("<p>Day 2<p>");
+				
+				document.write("<p>Today has been completely insane. First, I was thrown off the train because they found my dead rats, then I climbed back on the train and hid. Then I snuck in after dark to find some food, and that was when I met a man named Mattew Crandall. Long story short, he's asked me to join his group of dark magic acolytes, and I accepted. I don't know what's going to happen next, but it's exciting... and terrifying! Write more soon!</p>");
+				
+				alert("And so begins your whirlwind of an education in magic and the dark arts. You get your own robes, soon make friends with the other two acolytes on the train, and before long you're helping them aid Matthew in dark rituals, while learning to summon your own spells. Time flies by, and when Matthew and other acolytes get off the train, you go with them.");
+				
+				document.write("<p>Day... 16?<p>");
+				
+				document.write("<p>I need to keep better track of this thing. It's been two weeks, and I've learned so much. Tomorrow we're getting off at the first station, and the other acolytes are really excited. I am too. I hope I get to learn more cool stuff. I'll try to write more often.</p>");
+				
+				alert("The four of you set up shop in a small city, and the years go by, you learning more every day. Eventually, you surpass the other acolytes in your abilities, and you cannot imagine a better life than the one you have now, full of magic and the power of darkness and the night. One evening, after a long and exhausting ritual, Matthew pulls you aside.");
+				
+				alert("\"" + playerName + ",\" he says, \"I suppose you know that I've been working on something big for a while now.\"\n\"I had an inkling,\" you say.\n\"Well, there is a ritual I need to do - one that grants its target very great power - but it takes two people, and the second person recieves a fair amount of residual power. Nothing like the main participant, but enough to be formidable.\"");
+				
+				alert("\"You're the only person I trust with this, " + playerName + ". Once we're done with it, you and I could literally reshape the world.\"\nMatthew fills you in with the details, and at midnight, you and him are standing in the magic circle. The ritual is the most complicated one you've ever seen, and as you progress through its layers, it stinks more and more of pure evil.");
+				
+				var acolyteOrChampion = prompt("You come to the last stage, and you can feel the power surging up, ready to take hold. Mattew motions for you to set down a cup in a chalk circle, and you prepare to do so, but are then hit with the realization that if you do, Matthew is probably going to take over the world. A wave of uncertainty hits you, and you realize you could destroy him right now by just dumping out the contents of the goblet onto the circle. Lives in your hands for either path, you decide to...\n~Destroy him\n~Finish the ritual").toLowerCase();
+				
+				if (acolyteOrChampion.search("destroy") != -1) {
+					darkChampion();
+				} else if (acolyteOrChampion.search("finish") != -1) {
+					evilAcolyte();
+				} else {
+					galacticSpider(acolyteOrChampion);
+				}
+			}
+			
+			function evilAcolyte() {
+				
+				alert("You firm up your grip on the cup, deciding that you didn't get this far by being disloyal. You set the cup down, and stand up straight. The circle hums, and light explodes outwards. The two of you are hit with such a force that Matthew flies into you, and you are knocked cold.");
+				
+				alert("Eventually, your eyes slide open, and you find yourself lying in the ground, Matthew's cape under your head, Matthew sitting beside you, facing away. You sit up, veins tingling, and the world seems to fracture before your eyes. You can see every line of power, every binding and connection of reality, folded on itself. You seize a nearby urn in your mind as a test, and with barely more than a thought, you make it explode. Matthew turns around.");
+				
+				alert("\"Oh, good, you're alive,\" he says, and offers a hand to help you stand up. You take it, and as you find your feet, you realize the lines of power coming off Matthew are tenfold the ones coming off of you.\"So it worked then?\" you ask, already knowing the answer. Matthew looks around wonderingly. \"Indeed it did. So,\" he says, grinning, \"The world is our oyster. Shall we?\"");
+				
+				document.write("<p>Day 1493<p>");
+				
+				document.write("<p>Well, I suppose I failed at writing more often. Matthew and I have attained ultimate power, and the next step is to conquer the world. It's amazing - I can feel the entire world, pulsing just beneath the surface... I can't believe I was lucky enough to obtain this power. I should go, Matthew and I have things to do.</p>");
+
+				alert("And so you become the right hand " + playerGender[1] + " of the most powerful mage of all time. It takes a matter of weeks for you and him to take over the entire world, and lock it into his eternal rule. You can't believe how lucky you were to land such a high position, and as the years stretch into centuries, you and Matthew grow so powerful that you're even looking towards reaching into the stars.");
+				
+				alert("Sometimes, when you hear the suffering of the people, you can't help but wonder if you made the wrong choice, but have to find solace in the idea that it probably would have happened anyway, and that you're lucky to be as well off as you are. And besides, the cosmos await...");
+				
+				document.write("<p>Final Note:<p>");
+				
+				document.write("<p>I've learned how to transcribe my thoughts and memories directly into crystal, and therefore at this point, a diary is sort of useless. Goodbye, written word. I'll miss you. A bit.</p>");
+				
+				document.write("<p>--" + playerName + "</p>");
+				
+				document.write("<h1>You become advisor to the Ultimate Evil.</h1>");
+			}
+			
+			function darkChampion() {
+			
+				alert("Hands shaking, you toss out the cup's contents with a quick jerk. The ground rumbles, and Matthew looks to you. \"" + playerName + ", what have you done?!\"\n\'I'm sorry!\" you cry over the earthquake, \"I couldn't let you do this!\"\nMatthew face turns to pure rage, and he tries to leap over the circle at you. You flinch back, but inches away from you, Matthew is pulled into the broken power of the ritual and is consumed by the void. The air ripples and suddenly you are blown back with such force that you are knocked cold.");
+				
+				alert("Hours later, you come to. Your head is spinning, but you manage to sit up. The room is completely trashed, and there is no sign of Matthew anywhere. As you stand up, you become aware of a very deep sense of what's around you, even if you aren't looking. As a test, you pick up the only urn that survived the blast, and toss it in the air, turning around. Eyes shut, you reach behind you, and catch it defly in your right hand.");
+				
+				alert("You open your eyes, and look at the urn. A sudden sense of duty fills you, and as you look around the room, you realize that if Matthew could so easily get this close to destroying the world, others would try it too. Your path becomes clear, and you set the urn aside, stepping out the doors into your new life.");
+				
+				alert("And so, using the dark powers you obtained in your time with Matthew, you become a dark champion for the forces of good. You hone your talents over the years, tracking down those who would abuse power, and foiling their plans every time. Stories of you spread through the land like wildfire, and soon everyone knows your mission and your name. Despite the dark nature of your life, you couldn't be happier. After all, how many people can say that they stand against evil every day and live to tell the tale? The End.");
+				
+				document.write("<p>Day 1493<p>");
+				
+				document.write("<p>Well, I suppose I failed at writing more often. I'll start at the beginning. Matthew tried to get me to help him attain ultimate power so he could take over the world. I agreed, but in the middle of the ritual, realized how wrong it was, and destroyed him instead. Now I've decided to continue in that pursuit, to seek out and destroy evil wherever I can find it. This may be the last time I write - I have to travel light, and have little time for diaries. So if anyone ever finds this, just... take care of it, all right?</p>");
+				
+				document.write("<p>--" + playerName + "</p>");
+				
+				document.write("<h1>You become the Dark Champion of Good.</h1>");
+				
+			}
+			
+			function meetDana() {
+				
+				alert("The girl comes in, and you set the brush down on your bed. \"My name's Dana,\" she says, \"I saw you getting on the train, and you were all alone. I thought maybe we could be friends.\" You look at Dana. She seems to be about your age, and she looks nice enough. \"Um, sure,\" you say, \"So where are you headed?\"\n\"I'm going to stay with my aunt and uncle, to help in their bakery. My stop doesn't come for a few days. What's your name again?\"");
+				
+				alert("\"" + playerName + ". Nice to meet you.\"\nDana grins. \"The pleasure's all mine! So, where are you headed?\"\nYou look down.\"I don't know exactly. I just got on the train to get out of my home town.\"\nDana raises an eyebrow. \"You mean you ran away?\"\n\"Not exactly. My parents knew about it.\"\n\"Oh. Well. Once you're done here, maybe we could explore the train together? I'm sure an old place like this has lots of secrets. Anyway, I should go unpack too. We could meet in the front car when we're done.\" And as quick as she came, Dana is gone, shutting the door behind her.");
+				
+				var stayOrFindDana = prompt("A little dazed, you return to your suitcase, and finish pulling everything you'll need out. By now, the train is far out into the countryside, and your cabin is getting stuffy from the late summer heat. If you went out to find Dana, you could probably cool off, but exploring the train could get you both into trouble, depending on where you went...\n~Stay\n~Find Dana").toLowerCase();
+				
+				if (stayOrFindDana.search("stay") != -1) {
+					stayInRoom();
+				} else if (stayOrFindDana.search("find") != -1) {
+					findDana();
+				} else {
+					galacticSpider(stayOrFindDana);
+				}
+			}
+			
+			function findDana() {
+				
+				alert("Deciding you'd rather not just sit around, you get up and leave your room before the heat becomes unbearable. Sure enough, you find Dana in the front car, hands clasped behind her back waiting for you.\n\"There you are,\" she says, \"I was wondering how long I'd have to wait. Come on, I know the perfect place to start looking for interesting things.\"");
+				
+				alert("You follow her to the kitchen car. \"This is where the interesting stuff is?\" you ask incredulously. Dana looks back at you. \"Just wait.\" She walks over to what looks like a closet, and opens it. On the inside, there are a few coats. You look at Dana. She pushes the coats aside, revealing a small panel with the letters \"AIILGNV\" engraved on it. \"Look. You can press these letters. I bet it opens a secret passage.\"");
+				
+				panelOpeningTest();
+			}
+			
+			function stayInRoom() {
+				
+				alert("Deciding you'd rather not get involved in troublemaking, you sit on your bed, and crank open the window. The breeze is warm, but helps some. You pull a book out of your suitcase, lean back, and read for a few hours. Somewhere between chapter 7 and 8, you realize you're extremely hungry, and decide to find the dining car.");
+				
+				alert("You arrive, and find several other people eating as well. You grab some lasagna, and look for a place to sit, only to see Dana at a table already, waving you down. You go and sit with her, and she folds her arms at you.\n\"If you didn't want to explore, you could have told me. I waited in the front car for an hour.\"\n\"Sorry,\" you say, \"I guess I'm just not very adventurous.\"");
+				
+				alert("\"Or sociable,\" she scowls. You look down and eat your lasagna in silence. After a while, Dana sighs. \"Sorry. I guess I could have been a bit pushy earlier. I'm just bored out of my brains on this train. I'll bet you there's not one actually interesting person on here.\"\nYou look around, and see a frowning man at another table, a person on each side of him with their hats pulled low over their eyes.");
+				
+				var openCarOrNot = prompt("\"I bet he's interesting,\" you say, pointing. Dana snorts. \"Him? His name is Matthew Crandall, and he sells real estate. Not what I would call exciting.\"\n\"Does interesting have to be exciting?\" \n\"No. But he's not either of those. I'm bored, can we talk about something else?\" Dana looks up, suddenly excited, \"Say, want to go out to the open car?\"\nYou think for a second...\n~Yes\n~No").toLowerCase();
+				
+				if (openCarOrNot.search("yes") != -1) {
+					toOpenCar();
+				} else if (openCarOrNot.search("no") != -1) {
+					tooBoring();
+				} else {
+					galacticSpider(openCarOrNot);
+				}
+			}
+			
+			function tooBoring() {
+				alert("\"No thanks,\" you say. Dana looks at you a long time, then stands up with an exaggerated sigh. \"Fine, I'll just go by myself then. See you around, " + playerName + ".\"\nWith that, she stands up, and leaves you alone at the table. You go back to your lasagna, and finish it in silence. Dana doesn't come back.");
+				
+				alert("And so you journey on the train, all alone. With nowhere to go, you ride for a couple of weeks, then get off once you can't stand to watch the country rolling past any longer. The station you arrive at is of medium size, and the town is much the same. Asking around, you manage to find a job stocking shelves in a shop, and spend the rest of your days tending to it, eventually taking ownership of it yourself. The End.");
+				
+				document.write("<h1>You became a shopkeeper.</h1>");
+			}
+			
+			function toOpenCar() {
+				
+				var leanOrNot = prompt("\"Sure,\" you say, leaping up. Dana follows you, and you find the open car. The countryside whizzes past, and several people are sitting and enjoying ice tea. Dana goes right up to the railing and leans out. \"Wheeeeee!\"\nYou come up next to her, and start to lean out too. The railing creaks and bends slightly under your hands, and in a flash, you wonder if maybe you should stop putting your weight on it.\n~Step back\n~Stay put").toLowerCase();
+				
+				if (leanOrNot.search("back") != -1) {
+					backFromRailing();
+				} else if (leanOrNot.search("stay") != -1) {
+					leanDie();
+				} else {
+					galacticSpider(leanOrNot);
+				}
+			}
+			
+			function leanDie() {
+				
+				alert("You dismiss the thought, and lean out a little further. A second too late, you hear the terrble SNAP, and the rail breaks away from under you. You hear Dana gasp as you slip off the train, and the world blurs into a thousand colors before you hit the ground, and see nothing more.");
+				
+				document.write("<h1>You died falling off a train.</h1>");
+			}
+			
+			function backFromRailing() {
+				
+				alert("Like a startled cat, you leap back from the railing. Dana turns and gives you a weird look. \"Did a bee get you? They were swarming like crazy yesterday.\"\n\"No, I just... don't want to fall off is all.\"\n Dana rolls her eyes, and comes away from the edge. \"Fine, whatever. I'm going to get some iced tea.\"");
+				
+				alert("The next few days pass quickly, you and Dana wandering around the train, and talking about everything. The day before reaching her station, the two of you have just finished discussing the book you brought with you. Dana pauses a moment, then looks at you, clearly thinking hard. \"You said you didn't know where you were going to get off, didn't you?\"\n\"Yeah. I still don't know.\"\nDana takes a deep breath. \"Oh, " + playerName + ", you could come with me! I'm sure my aunt and uncle won't mind having another " + playerGender[0] + " to help bake everything, and they said they'd have to hire someone to help even after I got there! It would all work out perfectly!\"");
+				
+				var bakerOrNot = prompt("\"I don't know,\" you say, \"Are you sure they wouldn't mind?\"\n\"Totally. What do you think?\"\nDana watches you anxiously.\n~Yes\n~No").toLowerCase();
+				
+				if (bakerOrNot.search("yes") != -1) {
+					bakerEnding();
+				} else if (bakerOrNot.search("no") != -1) {
+					sewingEnding();
+				} else {
+					galacticSpider(bakerOrNot);
+				}
+			}
+			
+			function bakerEnding() {
+				alert("\"I think that sounds like a great idea!\"\nDana breaks into a huge smile! \"Oh, wonderful! This is going to be fantastic! Come on, we'll have to get you packed and ready!\"");
+				
+				alert("And so, when Dana's stop comes, you go with her. The two of you arrive at her aunt and uncle's bakery, and as Dana predicted, they welcome you with open arms. Weeks fly by as you get settled, and learn to make all sorts of interesting and delicious baked goods. You and Dana spend the evenings after the shop closes running around the city and getting in and back out of trouble every time.");
+				
+				alert("You can't imagine a better life than the one you have, with Dana, her very nice aunt and uncle, the adventures you all have, and all the wonderful tasty cake objects that you make. That is, until Matthew Crandall decides to take over the world, but that's another story. The End.");
+				
+				document.write("<h1>You became a baker.</h1>");
+			}
+			
+			function sewingEnding() {
+				alert("\"I'm sorry,\" you say, \"I just don't think it would feel right.\"\nDana looks crestfallen.\"Oh, that's all right. I guess I'd better go pack now. See you tomorrow at least, right " + playerName + "?\"\n\"Of course.\"");
+				
+				alert("And so, the next day, you bid goodbye to Dana, promising to write her once you find your place in the world. The train becomes very lonely once she's gone, and three stations later, you get off, without a clue of what you'll do. You ask around town for work, and eventually find a job in a clothing shop, sewing shirts and dresses all day. It's not the most exciting thing, but it keeps you fed.");
+				
+				alert("Still, sometimes you wonder if you'd made different choices, whether your life might have been a bit more interesting. But, you think as you pass the needle through the cloth one more time, it's too late now. The End.");
+				
+				document.write("<h1>You became a tailor.</h1>");
+			}
+			
+			function panelOpeningTest() {
+				
+				var letterPress = prompt("You look over the letters again, \"AIILGNV\", and think for a moment...").toLowerCase();
+				
+				if (letterPress.search("vailing") != -1) {
+					panelOpens();
+				} else {
+					alert("You press the letters in that order, but nothing happens.");
+					panelOpeningTest();
+				}
+			}
+			
+			function panelOpens() {
+				alert("The letters stick in that order, and you hear a sharp click. The back wall shifts slightly, and you find you can slide it to the left. You do so, and discover a short ladder behind it, leading down. You look to Dana. \"See? Interesting!\" She says, and climbs down. You follow her, and find that it leads to a dark and dusty crawl space. The sound of the wheels are deafening, and you realize you must be close to the ground.");
+				
+				alert("Dana is crawling in front of you, then stops. You crawl up beside her, and see what she saw. A light, on the other end of the car, and two figures, crouched around it. Their mouths are moving, but you can't hear what they're saying. They both look highly unpleasant.");
+
+				var closerOrFlee = prompt("\"Who are they?\" you whisper. Dana squints at them. \"I think they're named Hampton and Elizabeth. I thought they were newlyweds, but this is pretty odd for a honeymoon...\"\n The man scowls suddenly, and raises his voice. \"It's not here! Curse it, it's not here!\"\n\"Hampton, look!\" the woman says, brushing away the dust on the ground. You try to see, but it's no use. \"I'm going to see if I can get closer,\" you tell Dana. She looks at you, uncertain. \"I don't know. I think we should get out of here. They look like they mean business.\"\n~Get closer \n~Leave").toLowerCase();
+				
+				if (closerOrFlee.search("closer") != -1) {
+					closerToTreasureHunters();
+				} else if (closerOrFlee.search("leave") != -1) {
+					treasureHunterFlee();
+				} else {
+					galacticSpider(closerOrFlee);
+				}
+			}
+			
+			function treasureHunterFlee() {
+					//EVENTUAL TO ADD: Storyline of you, Dana, Elizabeth and Hampton fighting Matthew Crandall over Vailing's treasure
+				alert("\"All right. Let's leave.\"\nYou turn to get out of the crawlspace, only to find the panel shut. You slam into it, and it swings open, stirring up all the dust in the crawlspace. In seconds, you are overwhelmed by dust bunnies, and see nothing more.");
+
+				document.write("<h1>You were overwhelmed by dust bunnies.</h1>");
+
+				document.write("<h5>Congratulations, you got the weirdest ending</h5>");
+			}
+			
+			function closerToTreasureHunters() {
+				
+				alert("\"I'll be careful.\"\nQuietly as you can, you creep up the pair, staying just in the shadows. You are now close enough to hear every word they say, and see on the ground another panel, this time with squares instead of letters.\n\"It has to be in here, Hampton.\" the woman whispers, \"Can we get into it?\"\nHampton frowns at it. \"No. Old Vailing never did skimp on precautions. Probably forcing it will destroy the treasure inside. We'll have to find the combination. It's probably here on the train somewhere.\"");
+				
+				alert("Having heard enough, and not wanting to get caught, you creep back to Dana, and tell her the whole thing.\n\"Treasure?\" she gasps, \"We could find it before them! " + playerName + ", we could find it before them!\"\n\"We'll have to be quick. You're right, they do mean business.\"\nDana puts on a determined face. \"We can do it. Come on, " + playerName + ", let's get to work.");
+				
+				alert("The two of you hurry out of the secret passage, and back to your room. You pull out your journal, and set up the desk. \"All right, what do we know so far?\"\n\"Treasure,\" Dana says, \"We know there's treasure.\"\nYou write that down.");
+				
+				document.write("<p>~~ Treasure</p>");
+				
+				alert("\"Next, we know that it's in that crawlspace. And that there's two other people looking for it. And that we have to find the combination on the train.\"\n\"Hold on, let me write all that down!\"");
+				
+				document.write("<p>~~ In the crawlspace</p>");
+				
+				document.write("<p>~~ Others want it</p>");
+				
+				document.write("<p>~~ Find combination on train</p>");
+				
+				var searchDiningOrOpen = prompt("You scribble as fast as you can. \"All right, anything else?\"\n\"Mmm...\" Dana thinks, \"Nope! Let's get looking! Where do you want to start? I think either the dining car or the open car would be good places to look.\" \n~dining car \n~open car").toLowerCase();
+				
+				if (searchDiningOrOpen.search("dining") != -1) {
+					searchDiningRoom();
+				} else if (searchDiningOrOpen.search("open") != -1) {
+					searchOpenRoom();
+				} else {
+					galacticSpider(searchDiningOrOpen);
+				}
+			}
+			
+			function searchDiningRoom() {
+				
+				alert("You and Dana pick the dining room, and hurry on your way. Night has fallen, and the activity on the train is winding down. By the time you reach the dining car, it's almost empty.\n\"All right, " + playerName + ", you look over there by the dishes, I'll check the walls.\" Dana says. You go over to the stacks of plates, and start to look for something.");
+				
+				alert("Just as you think you aren't going to find anything, you notice a checkered pattern under where all the plates sit. \"Dana! Come look!\"\nShe comes running over, and sees. \"We'd better move those plates.\"\nSlowly and carefully, the pair of you shift the stack of dishes off the checkerboard. Some squares of it are noticably darker than others.");
+				
+				alert("Dana jumps suddenly, looking over your shoulder. \"" + playerName + "! They're coming! Quick, before they see us!\" She reaches under the plates and starts to move them back. You take a fast note of the squares, and help her. You get the dishes stacked back right, and the two of you run out of the car right as the other treasure hunters enter.");
+				
+				alert("You run back to the kitchen car, and open the secret passage. You and Dana jump down into the crawlspace, and tear through it to the secret panel. You set the paper by it, and Dana punches in the squares. The panel pops open, and you reach in, and find a papery object inside. You pull it out and hand it to Dana.");
+				
+				alert("She unfolds it, reads it, then turns her head, confused. \"What is this? It looks like... papers declaring ownership of the train?\" She looks up at you. \"What do we do with these?\"\nThe sound of the exit panel slamming shut makes both of you jump. Fast as you can, you make it back to the passage, to find is shut, with no way of opening it. Dana bangs on it with her fists.");
+				
+				var givePapersOrNot = prompt("\"Open up!\" she shouts, \"Open it right now!\"\nA muffled voice that sounds like the male treasure hunter calls through, \"Will you give us the papers?\" Dana steps back. \"" + playerName + ", what do we do?\"\n You step up and shout through the door. \"Why do you want them?!\"\n\"My name is Hampton Vailing, and this is my great-grandfather's train! Now are you going to give me the papers or not?!\"\n~Shout \"Yes\"\n~Shout \"No\"").toLowerCase();
+				
+				if (givePapersOrNot.search("yes") != -1) {
+					giveUpPapers();
+				} else if (givePapersOrNot.search("no") != -1) {
+					noSurrenderPapers();
+				} else {
+					galacticSpider(givePapersOrNot);
+				} 
+			}
+			
+			function giveUpPapers() {
+				alert("\"Yes, yes, all right!\" you shout. Dana sighs. The panel clicks, and swings open. You come face to face with the treasure hunters, who somehow look less ominous not in the flickering lantern light of the crawlspace. The man looks at you and Dana expectantly. After a moment's hesitation, you hand him the document. He close to snatches it from your hands, then unfolds it, and reads it.");
+				
+				alert("\"This... this is it,\" he says, eyes widening. He turns to the female treasure hunter, a smile breaking across his face. \"Elizabeth this is it!\" He shows it to her, and they both start to laugh in relief. Hampton picks Elizabeth up, and spins her around. You and Dana watch, not sure what to do.");
+				
+				alert("After a second, Hampton turns to you. \"Thank you. You have no idea what this means... this train - my great-grandfather's masterpiece - it can come back into the family now. Thank you!\"\n\"Er. You're welcome,\" you say. Dana just stares. Hampton and Elizabeth leave the car, and the two of you stay there for a long time.");
+				
+				alert("\"That,\" Dana says at last, \"was completely underwhelming.\"\n\"I'll say. But... at least it was exciting at first. And it makes a pretty good story.\"\nDana blinks. \"Hey, you're right.\" she turns to you. \"We should write it down!\"\nThe two of you go back to your room and work on writing it down, until neither of you can keep your eyes open.");
+				
+				alert("You spend the next few days working on it, and get it done in time to bring it to a publisher at one of the train's stops. They accept it, and within days it skyrockets to the most read book of the year. Taken completely aback, you and Dana become extremely rich before she even reaches her aunt and uncle's house.");
+				
+				alert("And so, the two of you agree to keep writing, and eventually set up your base at her aunt and uncle's house. The books you write together continue to be wildly successful, and you can't imagine a better life than the one you have, telling stories with your best friend. The End.");
+				
+				document.write("<h1>You became famous authors.</h1>");
+				
+			}
+			
+			function noSurrenderPapers () {
+				alert("\"No way!\" you cry through the panel. You hear a click, and beside you, Dana takes a deep breath. The panel slides open, and you come face to face with the treasure hunters. The man looks furious. \"Give me the papers!\"\nYou scowl. \"No! I already said no!\"\nThe man lunges as you try to bolt past him. You get caught between him and the doorframe. You can feel him grabbing for the documents, and you desperately try to hold them out of his reach. \"Dana, run for it!\" you shout. Dana just gasps. \""+ playerName + "!\"");
+				
+				alert("Suddenly, the papers aren't in your hand anymore. Surpised, you look around, and find the man doesn't have them either. You both step back, and find the tran's aged conductor standing there, leisurely flipping through the documents. The man turns on him. \"You. Give me those, right now.\"\nThe conductor gives him a withering look.");
+				
+				alert("\"These,\" he says, waving the papers, then sticking them under his arm, \"are the papers to my train. As such, they'll be going where they belong.\" He pushes up his wire glasses, and straightens his back, \"But, Mr. Vailing, I'm sure you will find that quite satisfactory, given that you can already ride this train for free whenever you want. Good day.\" The conducter gives a stiff little bow, and marches off to his part of the train. You, Dana, and the treasure hunters stand there dumbfounded.");
+				
+				alert("\"So,\" Dana says at last, \"Anyone heard of some other treasure we could find?\"\nThe woman shakes her head, and leaves the car. The man follows. You look towards Dana. \"What now?\"\n\"Well... that treasure was really fun to find, even if it did end horribly. I think I'd like to find more. How about you?\"\nYou grin \"Absolutely!\"");
+				
+				alert("And so began the legendary duo of Dana and " + playerName + ", treasure hunters and adventurers worthy of legend. Your exploits across the continent, carried by the Vailing Express, are told through all the world, and the riches you eventually find are enough for seven lifetimes. You can't imagine a better life than the one you have, seeking out wealth and adventure with your best friend. The End.");
+				
+				document.write("<h1>You became treasure hunters.</h1>");
+			}
+			
+			function searchOpenRoom() {
+				alert("You and Dana pick the open car, and hurry on your way. Night has fallen, and the car is lit only by a few lanterns that flicker eerily against the night that flies past. A deep sense of forboding comes over you, and you stay close to Dana. \"All right,\" she says, \"Where should we look first?\"\nYou glance around. \"Under the seats?\"\n\"Sure.\" she says.");
+				
+				alert("The two of you look under the seats and tables, and find nothing. After a few minutes, you stand up. \"Find anything, Dana?\"\n\"No,\" she says, standing and dusting herself off. Maybe we should check the dining car.\" You head that direction, but on the way you pass the kitchen car, and find the secret passage already open.");
+				
+				alert("\"We're too late!\" Dana cries. You both leap up to the secret passage and listen. You can hear delighted shouting from the crawlspace, getting closer. In a flash, you close the panel. In seconds, banging comes from the other side.\n\"Open up!\" the man shouts.\n\"Give us the treasure!\" you shout back, \"We won't open this door until you do!\"");
+				
+				alert("An hour passes, but at last, they agree. You slide the panel open just enough for him to hand out the treasure, a rolled up piece of paper. You grab it, and unroll it. You blink, and hand it to Dana.\n\"Ownership papers for the train?\" she asks, \"What are we going to do with these?\"\n\"I dunno. Here!\" you shout, and toss the papers back into the secret passage, \"You can keep them!\"\nYou hear a gasp of relief from the passage.");
+				
+				alert("\"I think we'd better get out of here,\" you tell Dana, and the two of you run back to your room.\n\"That... was fun.\" Dana says, catching her breath, \"That was really really fun.\"\nYou think for a second.\n\"It was, wasn't it?\"\nThe two of you look at each other, and your paths become clear.");
+				
+				alert("And so began the infamous duo of Dana and " + playerName + ", treasure seekers and thieves extraordinaire. No valuble is safe from your expert teamwork, and once you've set your sights on a target, it's only a matter of time before its disappearance finds its way into the news. It's a hard and dangerous life, and you both know that eventually you might get caught, but with the fame and reward, you can't imagine you'll stop any time soon. The End.");
+				
+				document.write("<h1>You became infamous thieves.</h1>");
+			}
+			
+		</script>
+	</body>
+</html>
