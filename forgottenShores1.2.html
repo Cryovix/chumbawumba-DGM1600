@@ -1,0 +1,4291 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2016 by anonymous (http://jsbin.com/tolilubucu/1/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+	<head>
+		<title>Forgotten Shores</title>
+		<!--Importing a Google Font-->
+		<link href="https://fonts.googleapis.com/css?family=Yatra+One" rel="stylesheet">		<!--Making the page less of an eyesore-->
+		<style>
+			body {
+				background-color:black;
+				color:white;
+				font-family: 'Yatra One', cursive;
+			}
+		</style>
+	</head>
+	<body>
+		<script>
+          
+        //Gameover function
+			
+		function breakUniverse (userInput) {
+			alert("By altering the acceptable methods of action you have inadvertantly broken the rules that govern existence. You are no more.");
+				
+			document.write("<h1>You broke the universe. Congratulations!</h1>");
+		}
+          
+        //Secret Ending
+        function becomeDiety () {
+            alert("Well this is awkward...you figured it out it seems. Congratulations you are the head honcho around here. If you have any questions or concerns feel free to ask me but I think you'll get the hang of things soon. Please don't destroy me! I was just doing my job!!!");
+              
+            document.write("<h1>Turns out you're the ruler of all creation! Why waste your time playing a game?</h1>");
+        }
+          
+        // Enemy Objects
+          
+        var sign = {status: "alive", damage: 0, weakness: "axe", hurt: "sword" || "magicSword", health: 10};
+        var ghost = {status: "alive", damage: 10, weakness: "magicWand", hurt: "magicSword" || "torch", health: 15};
+        var skeleton = {status: "alive", damage: 15, weakness: "axe", hurt: "sword" || "magicSword" || "magicWand", health: 50};
+        var zombie = {status: "alive", damage: 5, weakness: "torch", hurt: "sword" || "axe" || "magicSword" || "magicWand", health: 20};
+        var silverKnight = {status: "alive", damage: 1000, weakness: "none", hurt: "magicSword" || "magicWand", health: 1000};   
+        var zombieSilver = {status: "alive", damage: 50, weakness: "torch", hurt: "magicSword" || "magicWand", health: 150};
+        var knight = {status: "alive", damage: 50, weakness: "magicWword", hurt: "sword" || "axe" || "magicWand", health: 100};
+        var hydra = {status: "alive", damage: 200, weakness: "none", hurt: "sword" || "axe", health: 1000};
+        var townsFolk = {status: "alive", damage: 5, weakness: "axe", hurt: "sword" || "magicSword" || "magicWand" || "torch", health: 10};
+        var ghoul = {status: "alive", damage: 30, weakness: "torch", hurt: "magicSword" || "sword" || "axe", health: 150};
+        var wizard = {status: "alive", damage: 100, weakness: "magicWand", hurt: "magicSword" || "sword" || "axe" || "torch", health: 300};
+        var king = {status: "alive", damage: 100, weakness: "none", hurt: "magicSword" || "magicWand" || "sword" || "axe", health: 200};  
+        var dragon = {status: "alive", damage: 1000, weakness: "none", hurt: "magicSword" || "magicWand", health: 2000};  
+        
+        var enemies = [sign, ghost, skeleton, zombie, silverKnight, zombieSilver, knight, hydra, townsFolk, ghoul, wizard, king, dragon];
+          
+        //Weapon Objects
+          
+        var torch = {damage: 5};
+        var axe = {damage: 10};
+        var sword = {damage: 20};
+        var magicSword = {damage: 50};
+        var magicWand = {damage: 100};
+          
+        var weapons = [torch, axe, sword, magicSword, magicWand];
+          
+        //Character creation
+          
+        var playerName = prompt("Name your character.");
+          
+        var playerGender = prompt("Is " + playerName + " a male or female?").toLowerCase();
+          
+        var inventory = [];
+        
+        var playerWeapon = "empty";
+          
+        var player = {name:"Empty", gender:"empty", health: 100, armor: "None", defense: 0};
+          
+        var youSure = false;
+          
+        youSure = confirm("Are you sure your name is " + playerName + "?");
+          
+        while(youSure === false) {
+          playerName = prompt("Ok what is your actual name?");
+          youSure = confirm("Are you certain your name is " + playerName + "?");
+        }
+		  
+        player.Name = playerName;
+        youSure = confirm("Are you sure your gender is " + playerGender + "?");
+          
+        while(youSure === false) {
+          playerGender = prompt("Ok what is your actual gender?");
+          youSure = confirm("Are you certain your gender is " + playerGender + "?");
+        }
+          
+        player.Gender = playerGender;
+          
+        if (playerGender === "male") {
+            playerGender = ["boy", "man", "he", "him", "his", "lad", "his", "sir"];
+            begin();
+          } else if (playerGender === "female") {
+            playerGender = ["girl", "woman", "she", "her", "her", "lass", "hers", "miss"];
+            begin();
+          } else if(playerGender === "god", "diety"){
+            becomeDiety();
+          } else {
+			breakUniverse(playerGender);
+          }
+          
+        
+			
+        //-------Game starts here---------
+          
+        function begin() {
+            var beginning = prompt("You're standing in the middle of a sandy beach hedged by a forest on one side and the ocean on the other. You can see a dirt road to the north and there is a sign on the right side of the road.\n\n--Type: \"help\" for instructions.\n\nWhat do you do?").toLowerCase();
+            
+            switch (beginning) {
+              case "go north":
+                road1();
+                inventory.push[magicSword];
+                break;
+              case "go east":
+                shipWreck();
+                break;
+              case "go south":
+                breakUniverse();
+                break;
+              case "go west":
+                cliff();
+                break;
+              case "check":
+                alert("Check what?");
+                begin();
+                break;
+              case "take":
+                alert("Take what?");
+                begin();
+                break;
+              case "interact":
+                alert("Interact with what?");
+                begin();
+                break;
+              case "attack":
+                alert("Attack what?");
+                begin();
+                break;
+              case "run":
+                alert("You can't run.");
+                begin();
+                break;
+              case "use":
+                alert("Use what?");
+                begin();
+                break;
+              case "inventory":
+                alert(inventory);
+                begin();
+                break;
+              case "i":
+                alert(inventory);
+                begin();
+                break;
+              case "help":
+                alert("The objective of Forgotten Shores is to survive. In this game there are several commands that can be used to make that possible. Provided below are a list of the commands that can be used:\n\n"
+                     + "go north\n\n"
+                     + "go east\n\n"
+                     + "go south\n\n"
+                     + "go west\n\n"
+                     + "check ****: This allows you to check objects.\n\n"
+                     + "take ****: This puts objects in your inventory.\n\n"
+                     + "interact with ****: This allows interaction with objects.\n\n"
+                     + "use ****: This allows you to use objects in your inventory.\n\n"
+                     + "attack ****: This allows you to attack enemies.\n\n"
+                     + "run: This allows you to run from enemies.\n\n"
+                     + "inventory or i: This allows you to check your inventory.\n\n"
+                     + "There are no other commands.");
+                begin();
+                break;   
+              default:
+                alert("That isn't possible. Please clarify your request.");
+                begin();
+            }
+          
+        }
+        
+        
+          function road1() {
+            var travel = prompt("You come to a road that is hedged by forest on either sign. There is a sign on the side of the road.\n\nWhat do you do?").toLowerCase();
+            
+            switch (travel) {
+              case "go north":
+                field1();
+                break;
+              case "go east":
+                alert("You can't go that way.");
+                road1();
+                break;
+              case "go south":
+                begin();
+                break;
+              case "go west":
+                alert("You can't go that way.");
+                road1();
+                break;
+              case "check":
+                alert("Check what?");
+                road1();
+                break;
+              case "check sign":
+                alert("Forgotten Shores: North\n\nShore: South");
+                road1();
+                break;
+              case "take":
+                alert("Take what?");
+                road1();
+                break;
+              case "take sign":
+                if(sign === "broken"){
+                  alert("You took the sign.");
+                  inventory.push("sign");
+                  sign = "gone";
+                } else {
+                  alert("You can't take that.")
+                }
+              case "interact":
+                alert("Interact with what?");
+                road1();
+                break;
+              case "attack":
+                alert("Attack what?");
+                road1();
+                break;
+              //case "attack sign":
+                //if(sign.status === "dead"){
+                  //alert("The sign is broken.");
+                  //inventory.push("sign");
+                  //sign = "gone";
+                
+                //} else if(sign.status === "alive"){
+                  //playerWeapon = prompt("What do you attack with?")
+                  //fight(weapon,sign,player);
+                //}
+              case "run":
+                alert("You can't run.");
+                road1();
+                break;
+              case "use":
+                alert("Use what?");
+                road1();
+                break;
+              case "inventory":
+                alert(inventory);
+                road1();
+                break;
+              case "i":
+                alert(inventory);
+                road1();
+                break;
+              case "help":
+                alert("The objective of Forgotten Shores is to survive. In this game there are several commands that can be used to make that possible. Provided below are a list of the commands that can be used:\n\n"
+                     + "go north\n\n"
+                     + "go east\n\n"
+                     + "go south\n\n"
+                     + "go west\n\n"
+                     + "check ****: This allows you to check objects.\n\n"
+                     + "take ****: This puts objects in your inventory.\n\n"
+                     + "interact with ****: This allows interaction with objects.\n\n"
+                     + "use ****: This allows you to use objects in your inventory.\n\n"
+                     + "attack ****: This allows you to attack enemies.\n\n"
+                     + "run: This allows you to run from enemies.\n\n"
+                     + "inventory or i: This allows you to check your inventory.\n\n"
+                     + "There are no other commands.");
+                road1();
+                break;   
+              default:
+                alert("That isn't possible. Please clarify your request.");
+                road1();
+            }
+          }
+          
+          
+          
+          //------------------------------------ Start of Cave ------------------------------------------
+          
+          
+          
+          function cliff() {
+            var cliffs = prompt("\n\nWhat do you do?").toLowerCase();
+            
+            switch (cliffs) {
+              case "go north":
+                for(var i = 0; i<inventory.length; i++){
+                  if(inventory[i] === "moonstone"){
+                    cave();
+                  }
+                }
+                
+                alert("There is a large cliff there.");
+                cliff();
+                
+                break;
+              case "go east":
+                begin();
+                break;
+              case "go south":
+                breakUniverse();
+                break;
+              case "go west":
+                alert("You can't go that way.");
+                cliff();
+                break;
+              case "check":
+                alert("Check what?");
+                cliff();
+                break;
+              case "take":
+                alert("Take what?");
+                cliff();
+                break;
+              case "interact":
+                alert("Interact with what?");
+                cliff();
+                break;
+              case "attack":
+                alert("Attack what?");
+                cliff();
+                break;
+              case "run":
+                alert("You can't run.");
+                cliff();
+                break;
+              case "use":
+                alert("Use what?");
+                cliff();
+                break;
+              case "inventory":
+                alert(inventory);
+                cliff();
+                break;
+              case "i":
+                alert(inventory);
+                cliff();
+                break;
+              case "help":
+                alert("The objective of Forgotten Shores is to survive. In this game there are several commands that can be used to make that possible. Provided below are a list of the commands that can be used:\n\n"
+                     + "go north\n\n"
+                     + "go east\n\n"
+                     + "go south\n\n"
+                     + "go west\n\n"
+                     + "check ****: This allows you to check objects.\n\n"
+                     + "take ****: This puts objects in your inventory.\n\n"
+                     + "interact with ****: This allows interaction with objects.\n\n"
+                     + "use ****: This allows you to use objects in your inventory.\n\n"
+                     + "attack ****: This allows you to attack enemies.\n\n"
+                     + "run: This allows you to run from enemies.\n\n"
+                     + "inventory or i: This allows you to check your inventory.\n\n"
+                     + "There are no other commands.");
+                cliff();
+                break;   
+              default:
+                alert("That isn't possible. Please clarify your request.");
+                cliff();
+            }
+          }
+          
+          
+          function cave() {
+            var hidden = prompt("\n\nWhat do you do?").toLowerCase();
+            
+            switch (hidden) {
+              case "go north":
+                alert("");
+                caveMonster();
+                break;
+              case "go east":
+                alert("");
+                cave();
+                break;
+              case "go south":
+                alert("");
+                cliff();
+                break;
+              case "go west":
+                alert("");
+                cave();
+                break;
+              case "check":
+                alert("Check what?");
+                cave();
+                break;
+              case "take":
+                alert("Take what?");
+                cave();
+                break;
+              case "interact":
+                alert("Interact with what?");
+                cave();
+                break;
+              case "attack":
+                alert("Attack what?");
+                cave();
+                break;
+              case "run":
+                alert("");
+                cave();
+                break;
+              case "use":
+                alert("Use what?");
+                cave();
+                break;
+              case "inventory":
+                alert(inventory);
+                cave();
+                break;
+              case "i":
+                alert(inventory);
+                cave();
+                break;
+              case "help":
+                alert("The objective of Forgotten Shores is to survive. In this game there are several commands that can be used to make that possible. Provided below are a list of the commands that can be used:\n\n"
+                     + "go north\n\n"
+                     + "go east\n\n"
+                     + "go south\n\n"
+                     + "go west\n\n"
+                     + "check ****: This allows you to check objects.\n\n"
+                     + "take ****: This puts objects in your inventory.\n\n"
+                     + "interact with ****: This allows interaction with objects.\n\n"
+                     + "use ****: This allows you to use objects in your inventory.\n\n"
+                     + "run: This allows you to run from enemies.\n\n"
+                     + "attack ****: This allows you to attack enemies.\n\n"
+                     + "inventory or i: This allows you to check your inventory.\n\n"
+                     + "There are no other commands.");
+                cave();
+                break;   
+              default:
+                alert("That isn't possible. Please clarify your request.");
+                cave();
+            }
+          }
+          
+          
+          function caveMonster() {
+            var monster = prompt("\n\nWhat do you do?").toLowerCase();
+            
+            switch (monster) {
+              case "go north":
+                alert("");
+                treasure1();
+                break;
+              case "go east":
+                alert("");
+                caveMonster();
+                break;
+              case "go south":
+                alert("");
+                cave();
+                break;
+              case "go west":
+                alert("");
+                caveMonster();
+                break;
+              case "check":
+                alert("Check what?");
+                caveMonster();
+                break;
+              case "take":
+                alert("Take what?");
+                caveMonster();
+                break;
+              case "interact":
+                alert("Interact with what?");
+                caveMonster();
+                break;
+              case "attack":
+                alert("Attack what?");
+                caveMonster();
+                break;
+              case "run":
+                alert("");
+                caveMonster();
+                break;
+              case "use":
+                alert("Use what?");
+                caveMonster();
+                break;
+              case "inventory":
+                alert(inventory);
+                caveMonster();
+                break;
+              case "i":
+                alert(inventory);
+                caveMonster();
+                break;
+              case "help":
+                alert("The objective of Forgotten Shores is to survive. In this game there are several commands that can be used to make that possible. Provided below are a list of the commands that can be used:\n\n"
+                     + "go north\n\n"
+                     + "go east\n\n"
+                     + "go south\n\n"
+                     + "go west\n\n"
+                     + "check ****: This allows you to check objects.\n\n"
+                     + "take ****: This puts objects in your inventory.\n\n"
+                     + "interact with ****: This allows interaction with objects.\n\n"
+                     + "use ****: This allows you to use objects in your inventory.\n\n"
+                     + "run: This allows you to run from enemies.\n\n"
+                     + "attack ****: This allows you to attack enemies.\n\n"
+                     + "inventory or i: This allows you to check your inventory.\n\n"
+                     + "There are no other commands.");
+                caveMonster();
+                break;   
+              default:
+                alert("That isn't possible. Please clarify your request.");
+                caveMonster();
+            }
+          }
+          
+          
+          function treasure1() {
+            var treasure = prompt("\n\nWhat do you do?").toLowerCase();
+            
+            switch (treasure) {
+              case "go north":
+                alert("");
+                treasure1();
+                break;
+              case "go east":
+                alert("");
+                treasure1();
+                break;
+              case "go south":
+                alert("");
+                caveDeath();
+                break;
+              case "go west":
+                alert("");
+                treasure1();
+                break;
+              case "check":
+                alert("Check what?");
+                treasure1();
+                break;
+              case "take":
+                alert("Take what?");
+                treasure1();
+                break;
+              case "interact":
+                alert("Interact with what?");
+                treasure1();
+                break;
+              case "attack":
+                alert("Attack what?");
+                treasure1();
+                break;
+              case "run":
+                alert("");
+                treasure1();
+                break;
+              case "use":
+                alert("Use what?");
+                treasure1();
+                break;
+              case "inventory":
+                alert(inventory);
+                treasure1();
+                break;
+              case "i":
+                alert(inventory);
+                treasure1();
+                break;
+              case "help":
+                alert("The objective of Forgotten Shores is to survive. In this game there are several commands that can be used to make that possible. Provided below are a list of the commands that can be used:\n\n"
+                     + "go north\n\n"
+                     + "go east\n\n"
+                     + "go south\n\n"
+                     + "go west\n\n"
+                     + "check ****: This allows you to check objects.\n\n"
+                     + "take ****: This puts objects in your inventory.\n\n"
+                     + "interact with ****: This allows interaction with objects.\n\n"
+                     + "use ****: This allows you to use objects in your inventory.\n\n"
+                     + "run: This allows you to run from enemies.\n\n"
+                     + "attack ****: This allows you to attack enemies.\n\n"
+                     + "inventory or i: This allows you to check your inventory.\n\n"
+                     + "There are no other commands.");
+                treasure1();
+                break;   
+              default:
+                alert("That isn't possible. Please clarify your request.");
+                treasure1();
+            }
+          }
+          
+          
+          
+          //-------------------------------------------- End of Cave --------------------------------------------
+          //------------------------------------------- Start of Ship -------------------------------------------
+          
+          
+          
+          function shipWreck() {
+            var ship = prompt("\n\nWhat do you do?").toLowerCase();
+            
+            switch (ship) {
+              case "go north":
+                alert("");
+                shipWreck();
+                break;
+              case "go east":
+                alert("");
+                deck();
+                break;
+              case "go south":
+                alert("");
+                breakUniverse();
+                break;
+              case "go west":
+                alert("");
+                begin();
+                break;
+              case "check":
+                alert("Check what?");
+                shipWreck();
+                break;
+              case "take":
+                alert("Take what?");
+                shipWreck();
+                break;
+              case "interact":
+                alert("Interact with what?");
+                shipWreck();
+                break;
+              case "attack":
+                alert("Attack what?");
+                shipWreck();
+                break;
+              case "run":
+                alert("");
+                shipWreck();
+                break;
+              case "use":
+                alert("Use what?");
+                shipWreck();
+                break;
+              case "inventory":
+                alert(inventory);
+                shipWreck();
+                break;
+              case "i":
+                alert(inventory);
+                shipWreck();
+                break;
+              case "help":
+                alert("The objective of Forgotten Shores is to survive. In this game there are several commands that can be used to make that possible. Provided below are a list of the commands that can be used:\n\n"
+                     + "go north\n\n"
+                     + "go east\n\n"
+                     + "go south\n\n"
+                     + "go west\n\n"
+                     + "check ****: This allows you to check objects.\n\n"
+                     + "take ****: This puts objects in your inventory.\n\n"
+                     + "interact with ****: This allows interaction with objects.\n\n"
+                     + "use ****: This allows you to use objects in your inventory.\n\n"
+                     + "attack ****: This allows you to attack enemies.\n\n"
+                     + "run: This allows you to run from enemies.\n\n"
+                     + "inventory or i: This allows you to check your inventory.\n\n"
+                     + "There are no other commands.");
+                shipWreck();
+                break;   
+              default:
+                alert("That isn't possible. Please clarify your request.");
+                shipWreck();
+            }
+          }
+          
+          
+          function deck() {
+            var deck1 = prompt("\n\nWhat do you do?").toLowerCase();
+            
+            switch (deck1) {
+              case "go north":
+                alert("");
+                hull();
+                break;
+              case "go east":
+                alert("");
+                deck();
+                break;
+              case "go south":
+                alert("");
+                captains();
+                break;
+              case "go west":
+                alert("");
+                shipWreck();
+                break;
+              case "check":
+                alert("Check what?");
+                deck();
+                break;
+              case "take":
+                alert("Take what?");
+                deck();
+                break;
+              case "interact":
+                alert("Interact with what?");
+                deck();
+                break;
+              case "attack":
+                alert("Attack what?");
+                deck();
+                break;
+              case "run":
+                alert("");
+                deck();
+                break;
+              case "use":
+                alert("Use what?");
+                deck();
+                break;
+              case "inventory":
+                alert(inventory);
+                deck();
+                break;
+              case "i":
+                alert(inventory);
+                deck();
+                break;
+              case "help":
+                alert("The objective of Forgotten Shores is to survive. In this game there are several commands that can be used to make that possible. Provided below are a list of the commands that can be used:\n\n"
+                     + "go north\n\n"
+                     + "go east\n\n"
+                     + "go south\n\n"
+                     + "go west\n\n"
+                     + "check ****: This allows you to check objects.\n\n"
+                     + "take ****: This puts objects in your inventory.\n\n"
+                     + "interact with ****: This allows interaction with objects.\n\n"
+                     + "use ****: This allows you to use objects in your inventory.\n\n"
+                     + "run: This allows you to run from enemies.\n\n"
+                     + "attack ****: This allows you to attack enemies.\n\n"
+                     + "inventory or i: This allows you to check your inventory.\n\n"
+                     + "There are no other commands.");
+                deck();
+                break;   
+              default:
+                alert("That isn't possible. Please clarify your request.");
+                deck();
+            }
+          }
+          
+          
+          function captains() {
+            var quarters = prompt("\n\nWhat do you do?").toLowerCase();
+            
+            switch (quarters) {
+              case "go north":
+                alert("");
+                deck();
+                break;
+              case "go east":
+                alert("");
+                captains();
+                break;
+              case "go south":
+                alert("");
+                captains();
+                break;
+              case "go west":
+                alert("");
+                captains();
+                break;
+              case "check":
+                alert("Check what?");
+                captains();
+                break;
+              case "take":
+                alert("Take what?");
+                captains();
+                break;
+              case "interact":
+                alert("Interact with what?");
+                captains();
+                break;
+              case "attack":
+                alert("Attack what?");
+                captains();
+                break;
+              case "run":
+                alert("");
+                captains();
+                break;
+              case "use":
+                alert("Use what?");
+                captains();
+                break;
+              case "inventory":
+                alert(inventory);
+                captains();
+                break;
+              case "i":
+                alert(inventory);
+                captains();
+                break;
+              case "help":
+                alert("The objective of Forgotten Shores is to survive. In this game there are several commands that can be used to make that possible. Provided below are a list of the commands that can be used:\n\n"
+                     + "go north\n\n"
+                     + "go east\n\n"
+                     + "go south\n\n"
+                     + "go west\n\n"
+                     + "check ****: This allows you to check objects.\n\n"
+                     + "take ****: This puts objects in your inventory.\n\n"
+                     + "interact with ****: This allows interaction with objects.\n\n"
+                     + "use ****: This allows you to use objects in your inventory.\n\n"
+                     + "run: This allows you to run from enemies.\n\n"
+                     + "attack ****: This allows you to attack enemies.\n\n"
+                     + "inventory or i: This allows you to check your inventory.\n\n"
+                     + "There are no other commands.");
+                captains();
+                break;   
+              default:
+                alert("That isn't possible. Please clarify your request.");
+                captains();
+            }
+          }
+          
+          
+          function hull() {
+            var insideShip = prompt("\n\nWhat do you do?").toLowerCase();
+            
+            switch (insideShip) {
+              case "go north":
+                alert("");
+                cannon();
+                break;
+              case "go east":
+                alert("");
+                crew();
+                break;
+              case "go south":
+                alert("");
+                deck();
+                break;
+              case "go west":
+                alert("");
+                mess();
+                break;
+              case "check":
+                alert("Check what?");
+                hull();
+                break;
+              case "take":
+                alert("Take what?");
+                hull();
+                break;
+              case "interact":
+                alert("Interact with what?");
+                hull();
+                break;
+              case "attack":
+                alert("Attack what?");
+                hull();
+                break;
+              case "run":
+                alert("");
+                hull();
+                break;
+              case "use":
+                alert("Use what?");
+                hull();
+                break;
+              case "inventory":
+                alert(inventory);
+                hull();
+                break;
+              case "i":
+                alert(inventory);
+                hull();
+                break;
+              case "help":
+                alert("The objective of Forgotten Shores is to survive. In this game there are several commands that can be used to make that possible. Provided below are a list of the commands that can be used:\n\n"
+                     + "go north\n\n"
+                     + "go east\n\n"
+                     + "go south\n\n"
+                     + "go west\n\n"
+                     + "check ****: This allows you to check objects.\n\n"
+                     + "take ****: This puts objects in your inventory.\n\n"
+                     + "interact with ****: This allows interaction with objects.\n\n"
+                     + "use ****: This allows you to use objects in your inventory.\n\n"
+                     + "run: This allows you to run from enemies.\n\n"
+                     + "attack ****: This allows you to attack enemies.\n\n"
+                     + "inventory or i: This allows you to check your inventory.\n\n"
+                     + "There are no other commands.");
+                hull();
+                break;   
+              default:
+                alert("That isn't possible. Please clarify your request.");
+                hull();
+            }
+          }
+          
+          
+          function mess() {
+            var food = prompt("\n\nWhat do you do?").toLowerCase();
+            
+            switch (food) {
+              case "go north":
+                alert("");
+                mess();
+                break;
+              case "go east":
+                alert("");
+                hull();
+                break;
+              case "go south":
+                alert("");
+                mess();
+                break;
+              case "go west":
+                alert("");
+                mess();
+                break;
+              case "check":
+                alert("Check what?");
+                mess();
+                break;
+              case "take":
+                alert("Take what?");
+                mess();
+                break;
+              case "interact":
+                alert("Interact with what?");
+                mess();
+                break;
+              case "attack":
+                alert("Attack what?");
+                mess();
+                break;
+              case "run":
+                alert("");
+                mess();
+                break;
+              case "use":
+                alert("Use what?");
+                mess();
+                break;
+              case "inventory":
+                alert(inventory);
+                mess();
+                break;
+              case "i":
+                alert(inventory);
+                mess();
+                break;
+              case "help":
+                alert("The objective of Forgotten Shores is to survive. In this game there are several commands that can be used to make that possible. Provided below are a list of the commands that can be used:\n\n"
+                     + "go north\n\n"
+                     + "go east\n\n"
+                     + "go south\n\n"
+                     + "go west\n\n"
+                     + "check ****: This allows you to check objects.\n\n"
+                     + "take ****: This puts objects in your inventory.\n\n"
+                     + "interact with ****: This allows interaction with objects.\n\n"
+                     + "use ****: This allows you to use objects in your inventory.\n\n"
+                     + "run: This allows you to run from enemies.\n\n"
+                     + "attack ****: This allows you to attack enemies.\n\n"
+                     + "inventory or i: This allows you to check your inventory.\n\n"
+                     + "There are no other commands.");
+                mess();
+                break;   
+              default:
+                alert("That isn't possible. Please clarify your request.");
+                mess();
+            }
+          }
+          
+          
+          function cannon() {
+            var fire = prompt("\n\nWhat do you do?").toLowerCase();
+            
+            switch (fire) {
+              case "go north":
+                alert("");
+                cannon();
+                break;
+              case "go east":
+                alert("");
+                cannon();
+                break;
+              case "go south":
+                alert("");
+                hull();
+                break;
+              case "go west":
+                alert("");
+                cannon();
+                break;
+              case "check":
+                alert("Check what?");
+                cannon();
+                break;
+              case "take":
+                alert("Take what?");
+                cannon();
+                break;
+              case "interact":
+                alert("Interact with what?");
+                cannon();
+                break;
+              case "attack":
+                alert("Attack what?");
+                cannon();
+                break;
+              case "run":
+                alert("");
+                cannon();
+                break;
+              case "use":
+                alert("Use what?");
+                cannon();
+                break;
+              case "inventory":
+                alert(inventory);
+                cannon();
+                break;
+              case "i":
+                alert(inventory);
+                cannon();
+                break;
+              case "help":
+                alert("The objective of Forgotten Shores is to survive. In this game there are several commands that can be used to make that possible. Provided below are a list of the commands that can be used:\n\n"
+                     + "go north\n\n"
+                     + "go east\n\n"
+                     + "go south\n\n"
+                     + "go west\n\n"
+                     + "check ****: This allows you to check objects.\n\n"
+                     + "take ****: This puts objects in your inventory.\n\n"
+                     + "interact with ****: This allows interaction with objects.\n\n"
+                     + "use ****: This allows you to use objects in your inventory.\n\n"
+                     + "run: This allows you to run from enemies.\n\n"
+                     + "attack ****: This allows you to attack enemies.\n\n"
+                     + "inventory or i: This allows you to check your inventory.\n\n"
+                     + "There are no other commands.");
+                cannon();
+                break;   
+              default:
+                alert("That isn't possible. Please clarify your request.");
+                cannon();
+            }
+          }
+          
+          
+          function crew() {
+            var quarters = prompt("\n\nWhat do you do?").toLowerCase();
+            
+            switch (quarters) {
+              case "go north":
+                alert("");
+                brig();
+                break;
+              case "go east":
+                alert("");
+                crew();
+                break;
+              case "go south":
+                alert("");
+                cargo();
+                break;
+              case "go west":
+                alert("");
+                hull();
+                break;
+              case "check":
+                alert("Check what?");
+                crew();
+                break;
+              case "take":
+                alert("Take what?");
+                crew();
+                break;
+              case "interact":
+                alert("Interact with what?");
+                crew();
+                break;
+              case "attack":
+                alert("Attack what?");
+                crew();
+                break;
+              case "run":
+                alert("");
+                crew();
+                break;
+              case "use":
+                alert("Use what?");
+                crew();
+                break;
+              case "inventory":
+                alert(inventory);
+                crew();
+                break;
+              case "i":
+                alert(inventory);
+                crew();
+                break;
+              case "help":
+                alert("The objective of Forgotten Shores is to survive. In this game there are several commands that can be used to make that possible. Provided below are a list of the commands that can be used:\n\n"
+                     + "go north\n\n"
+                     + "go east\n\n"
+                     + "go south\n\n"
+                     + "go west\n\n"
+                     + "check ****: This allows you to check objects.\n\n"
+                     + "take ****: This puts objects in your inventory.\n\n"
+                     + "interact with ****: This allows interaction with objects.\n\n"
+                     + "use ****: This allows you to use objects in your inventory.\n\n"
+                     + "run: This allows you to run from enemies.\n\n"
+                     + "attack ****: This allows you to attack enemies.\n\n"
+                     + "inventory or i: This allows you to check your inventory.\n\n"
+                     + "There are no other commands.");
+                crew();
+                break;   
+              default:
+                alert("That isn't possible. Please clarify your request.");
+                crew();
+            }
+          }
+          
+          
+          function brig() {
+            var prison = prompt("\n\nWhat do you do?").toLowerCase();
+            
+            switch (prison) {
+              case "go north":
+                alert("");
+                brig();
+                break;
+              case "go east":
+                alert("");
+                brig();
+                break;
+              case "go south":
+                alert("");
+                crew();
+                break;
+              case "go west":
+                alert("");
+                brig();
+                break;
+              case "check":
+                alert("Check what?");
+                brig();
+                break;
+              case "take":
+                alert("Take what?");
+                brig();
+                break;
+              case "interact":
+                alert("Interact with what?");
+                brig();
+                break;
+              case "attack":
+                alert("Attack what?");
+                brig();
+                break;
+              case "run":
+                alert("");
+                brig();
+                break;
+              case "use":
+                alert("Use what?");
+                brig();
+                break;
+              case "inventory":
+                alert(inventory);
+                brig();
+                break;
+              case "i":
+                alert(inventory);
+                brig();
+                break;
+              case "help":
+                alert("The objective of Forgotten Shores is to survive. In this game there are several commands that can be used to make that possible. Provided below are a list of the commands that can be used:\n\n"
+                     + "go north\n\n"
+                     + "go east\n\n"
+                     + "go south\n\n"
+                     + "go west\n\n"
+                     + "check ****: This allows you to check objects.\n\n"
+                     + "take ****: This puts objects in your inventory.\n\n"
+                     + "interact with ****: This allows interaction with objects.\n\n"
+                     + "use ****: This allows you to use objects in your inventory.\n\n"
+                     + "run: This allows you to run from enemies.\n\n"
+                     + "attack ****: This allows you to attack enemies.\n\n"
+                     + "inventory or i: This allows you to check your inventory.\n\n"
+                     + "There are no other commands.");
+                brig();
+                break;   
+              default:
+                alert("That isn't possible. Please clarify your request.");
+                brig();
+            }
+          }
+          
+          
+          function cargo() {
+            var storage = prompt("\n\nWhat do you do?").toLowerCase();
+            
+            switch (storage) {
+              case "go north":
+                alert("");
+                crew();
+                break;
+              case "go east":
+                alert("");
+                cargo();
+                break;
+              case "go south":
+                alert("");
+                treasure2();
+                break;
+              case "go west":
+                alert("");
+                cargo();
+                break;
+              case "check":
+                alert("Check what?");
+                cargo();
+                break;
+              case "take":
+                alert("Take what?");
+                cargo();
+                break;
+              case "interact":
+                alert("Interact with what?");
+                cargo();
+                break;
+              case "attack":
+                alert("Attack what?");
+                cargo();
+                break;
+              case "run":
+                alert("");
+                cargo();
+                break;
+              case "use":
+                alert("Use what?");
+                cargo();
+                break;
+              case "inventory":
+                alert(inventory);
+                cargo();
+                break;
+              case "i":
+                alert(inventory);
+                cargo();
+                break;
+              case "help":
+                alert("The objective of Forgotten Shores is to survive. In this game there are several commands that can be used to make that possible. Provided below are a list of the commands that can be used:\n\n"
+                     + "go north\n\n"
+                     + "go east\n\n"
+                     + "go south\n\n"
+                     + "go west\n\n"
+                     + "check ****: This allows you to check objects.\n\n"
+                     + "take ****: This puts objects in your inventory.\n\n"
+                     + "interact with ****: This allows interaction with objects.\n\n"
+                     + "use ****: This allows you to use objects in your inventory.\n\n"
+                     + "run: This allows you to run from enemies.\n\n"
+                     + "attack ****: This allows you to attack enemies.\n\n"
+                     + "inventory or i: This allows you to check your inventory.\n\n"
+                     + "There are no other commands.");
+                cargo();
+                break;   
+              default:
+                alert("That isn't possible. Please clarify your request.");
+                cargo();
+            }
+          }
+          
+          
+          //---------------------------------------- End of ship --------------------------------------
+          
+          
+          function field1() {
+            var travel = prompt("\n\nWhat do you do?").toLowerCase();
+            
+            switch (travel) {
+              case "go north":
+                alert("");
+                forgottenShores();
+                break;
+              case "go east":
+                alert("");
+                field1();
+                break;
+              case "go south":
+                alert("");
+                road1();
+                break;
+              case "go west":
+                alert("");
+                field1();
+                break;
+              case "check":
+                alert("Check what?");
+                field1();
+                break;
+              case "take":
+                alert("Take what?");
+                field1();
+                break;
+              case "interact":
+                alert("Interact with what?");
+                field1();
+                break;
+              case "attack":
+                alert("Attack what?");
+                field1();
+                break;
+              case "run":
+                alert("");
+                field1();
+                break;
+              case "use":
+                alert("Use what?");
+                field1();
+                break;
+              case "inventory":
+                alert(inventory);
+                field1();
+                break;
+              case "i":
+                alert(inventory);
+                field1();
+                break;
+              case "help":
+                alert("The objective of Forgotten Shores is to survive. In this game there are several commands that can be used to make that possible. Provided below are a list of the commands that can be used:\n\n"
+                     + "go north\n\n"
+                     + "go east\n\n"
+                     + "go south\n\n"
+                     + "go west\n\n"
+                     + "check ****: This allows you to check objects.\n\n"
+                     + "take ****: This puts objects in your inventory.\n\n"
+                     + "interact with ****: This allows interaction with objects.\n\n"
+                     + "use ****: This allows you to use objects in your inventory.\n\n"
+                     + "attack ****: This allows you to attack enemies.\n\n"
+                     + "run: This allows you to run from enemies.\n\n"
+                     + "inventory or i: This allows you to check your inventory.\n\n"
+                     + "There are no other commands.");
+                field1();
+                break;   
+              default:
+                alert("That isn't possible. Please clarify your request.");
+                field1();
+            }
+          }
+          
+          
+          
+          //---------------------------------------- Start of Town -------------------------------------
+          
+          
+          
+          function forgottenShores() {
+            var town = prompt("\n\nWhat do you do?").toLowerCase();
+            
+            switch (town) {
+              case "go north":
+                alert("");
+                townCenter();
+                break;
+              case "go east":
+                alert("");
+                forgottenShores();
+                break;
+              case "go south":
+                alert("");
+                field1();
+                break;
+              case "go west":
+                alert("");
+                forgottenShores();
+                break;
+              case "check":
+                alert("Check what?");
+                forgottenShores();
+                break;
+              case "take":
+                alert("Take what?");
+                forgottenShores();
+                break;
+              case "interact":
+                alert("Interact with what?");
+                forgottenShores();
+                break;
+              case "attack":
+                alert("Attack what?");
+                forgottenShores();
+                break;
+              case "run":
+                alert("");
+                forgottenShores();
+                break;
+              case "use":
+                alert("Use what?");
+                forgottenShores();
+                break;
+              case "inventory":
+                alert(inventory);
+                forgottenShores();
+                break;
+              case "i":
+                alert(inventory);
+                forgottenShores();
+                break;
+              case "help":
+                alert("The objective of Forgotten Shores is to survive. In this game there are several commands that can be used to make that possible. Provided below are a list of the commands that can be used:\n\n"
+                     + "go north\n\n"
+                     + "go east\n\n"
+                     + "go south\n\n"
+                     + "go west\n\n"
+                     + "check ****: This allows you to check objects.\n\n"
+                     + "take ****: This puts objects in your inventory.\n\n"
+                     + "interact with ****: This allows interaction with objects.\n\n"
+                     + "use ****: This allows you to use objects in your inventory.\n\n"
+                     + "attack ****: This allows you to attack enemies.\n\n"
+                     + "run: This allows you to run from enemies.\n\n"
+                     + "inventory or i: This allows you to check your inventory.\n\n"
+                     + "There are no other commands.");
+                forgottenShores();
+                break;   
+              default:
+                alert("That isn't possible. Please clarify your request.");
+                forgottenShores();
+            }
+          }
+          
+          
+          function townCenter() {
+            var town = prompt("\n\nWhat do you do?").toLowerCase();
+            
+            switch (town) {
+              case "go north":
+                alert("");
+                leaveTown();
+                break;
+              case "go east":
+                alert("");
+                bazaar1();
+                break;
+              case "go south":
+                alert("");
+                forgottenShores();
+                break;
+              case "go west":
+                alert("");
+                homes1();
+                break;
+              case "check":
+                alert("Check what?");
+                townCenter();
+                break;
+              case "take":
+                alert("Take what?");
+                townCenter();
+                break;
+              case "interact":
+                alert("Interact with what?");
+                townCenter();
+                break;
+              case "attack":
+                alert("Attack what?");
+                townCenter();
+                break;
+              case "run":
+                alert("");
+                townCenter();
+                break;
+              case "use":
+                alert("Use what?");
+                townCenter();
+                break;
+              case "inventory":
+                alert(inventory);
+                townCenter();
+                break;
+              case "i":
+                alert(inventory);
+                townCenter();
+                break;
+              case "help":
+                alert("The objective of Forgotten Shores is to survive. In this game there are several commands that can be used to make that possible. Provided below are a list of the commands that can be used:\n\n"
+                     + "go north\n\n"
+                     + "go east\n\n"
+                     + "go south\n\n"
+                     + "go west\n\n"
+                     + "check ****: This allows you to check objects.\n\n"
+                     + "take ****: This puts objects in your inventory.\n\n"
+                     + "interact with ****: This allows interaction with objects.\n\n"
+                     + "use ****: This allows you to use objects in your inventory.\n\n"
+                     + "attack ****: This allows you to attack enemies.\n\n"
+                     + "run: This allows you to run from enemies.\n\n"
+                     + "inventory or i: This allows you to check your inventory.\n\n"
+                     + "There are no other commands.");
+                townCenter();
+                break;   
+              default:
+                alert("That isn't possible. Please clarify your request.");
+                townCenter();
+            }
+          }
+          
+          
+          function homes1() {
+            var living = prompt("\n\nWhat do you do?").toLowerCase();
+            
+            switch (living) {
+              case "go north":
+                alert("");
+                homes2();
+                break;
+              case "go east":
+                alert("");
+                townCenter();
+                break;
+              case "go south":
+                alert("");
+                homes3();
+                break;
+              case "go west":
+                alert("");
+                homes1();
+                break;
+              case "check":
+                alert("Check what?");
+                homes1();
+                break;
+              case "take":
+                alert("Take what?");
+                homes1();
+                break;
+              case "interact":
+                alert("Interact with what?");
+                homes1();
+                break;
+              case "attack":
+                alert("Attack what?");
+                homes1();
+                break;
+              case "run":
+                alert("");
+                homes1();
+                break;
+              case "use":
+                alert("Use what?");
+                homes1();
+                break;
+              case "inventory":
+                alert(inventory);
+                homes1();
+                break;
+              case "i":
+                alert(inventory);
+                homes1();
+                break;
+              case "help":
+                alert("The objective of Forgotten Shores is to survive. In this game there are several commands that can be used to make that possible. Provided below are a list of the commands that can be used:\n\n"
+                     + "go north\n\n"
+                     + "go east\n\n"
+                     + "go south\n\n"
+                     + "go west\n\n"
+                     + "check ****: This allows you to check objects.\n\n"
+                     + "take ****: This puts objects in your inventory.\n\n"
+                     + "interact with ****: This allows interaction with objects.\n\n"
+                     + "use ****: This allows you to use objects in your inventory.\n\n"
+                     + "run: This allows you to run from enemies.\n\n"
+                     + "attack ****: This allows you to attack enemies.\n\n"
+                     + "inventory or i: This allows you to check your inventory.\n\n"
+                     + "There are no other commands.");
+                homes1();
+                break;   
+              default:
+                alert("That isn't possible. Please clarify your request.");
+                homes1();
+            }
+          }
+          
+          
+          function homes3() {
+            var living = prompt("\n\nWhat do you do?").toLowerCase();
+            
+            switch (living) {
+              case "go north":
+                alert("");
+                homes1();
+                break;
+              case "go east":
+                alert("");
+                homes3();
+                break;
+              case "go south":
+                alert("");
+                homes3();
+                break;
+              case "go west":
+                alert("");
+                homes3();
+                break;
+              case "check":
+                alert("Check what?");
+                homes3();
+                break;
+              case "take":
+                alert("Take what?");
+                homes3();
+                break;
+              case "interact":
+                alert("Interact with what?");
+                homes3();
+                break;
+              case "attack":
+                alert("Attack what?");
+                homes3();
+                break;
+              case "run":
+                alert("");
+                homes3();
+                break;
+              case "use":
+                alert("Use what?");
+                homes3();
+                break;
+              case "inventory":
+                alert(inventory);
+                homes3();
+                break;
+              case "i":
+                alert(inventory);
+                homes3();
+                break;
+              case "help":
+                alert("The objective of Forgotten Shores is to survive. In this game there are several commands that can be used to make that possible. Provided below are a list of the commands that can be used:\n\n"
+                     + "go north\n\n"
+                     + "go east\n\n"
+                     + "go south\n\n"
+                     + "go west\n\n"
+                     + "check ****: This allows you to check objects.\n\n"
+                     + "take ****: This puts objects in your inventory.\n\n"
+                     + "interact with ****: This allows interaction with objects.\n\n"
+                     + "use ****: This allows you to use objects in your inventory.\n\n"
+                     + "run: This allows you to run from enemies.\n\n"
+                     + "attack ****: This allows you to attack enemies.\n\n"
+                     + "inventory or i: This allows you to check your inventory.\n\n"
+                     + "There are no other commands.");
+                homes3();
+                break;   
+              default:
+                alert("That isn't possible. Please clarify your request.");
+                homes3();
+            }
+          }
+          
+          
+          function homes2() {
+            var living = prompt("\n\nWhat do you do?").toLowerCase();
+            
+            switch (living) {
+              case "go north":
+                alert("");
+                homes2();
+                break;
+              case "go east":
+                alert("");
+                homes2();
+                break;
+              case "go south":
+                alert("");
+                homes1();
+                break;
+              case "go west":
+                alert("");
+                mazeEntrance();
+                break;
+              case "check":
+                alert("Check what?");
+                homes2();
+                break;
+              case "take":
+                alert("Take what?");
+                homes2();
+                break;
+              case "interact":
+                alert("Interact with what?");
+                homes2();
+                break;
+              case "attack":
+                alert("Attack what?");
+                homes2();
+                break;
+              case "run":
+                alert("");
+                homes2();
+                break;
+              case "use":
+                alert("Use what?");
+                homes2();
+                break;
+              case "inventory":
+                alert(inventory);
+                homes2();
+                break;
+              case "i":
+                alert(inventory);
+                homes2();
+                break;
+              case "help":
+                alert("The objective of Forgotten Shores is to survive. In this game there are several commands that can be used to make that possible. Provided below are a list of the commands that can be used:\n\n"
+                     + "go north\n\n"
+                     + "go east\n\n"
+                     + "go south\n\n"
+                     + "go west\n\n"
+                     + "check ****: This allows you to check objects.\n\n"
+                     + "take ****: This puts objects in your inventory.\n\n"
+                     + "interact with ****: This allows interaction with objects.\n\n"
+                     + "use ****: This allows you to use objects in your inventory.\n\n"
+                     + "run: This allows you to run from enemies.\n\n"
+                     + "attack ****: This allows you to attack enemies.\n\n"
+                     + "inventory or i: This allows you to check your inventory.\n\n"
+                     + "There are no other commands.");
+                homes2();
+                break;   
+              default:
+                alert("That isn't possible. Please clarify your request.");
+                homes2();
+            }
+          }
+          
+          
+          function bazaar1() {
+            var shopping = prompt("\n\nWhat do you do?").toLowerCase();
+            
+            switch (shopping) {
+              case "go north":
+                alert("");
+                bazaar2();
+                break;
+              case "go east":
+                alert("");
+                swampRoad();
+                break;
+              case "go south":
+                alert("");
+                bazaar3();
+                break;
+              case "go west":
+                alert("");
+                townCenter();
+                break;
+              case "check":
+                alert("Check what?");
+                bazaar1();
+                break;
+              case "take":
+                alert("Take what?");
+                bazaar1();
+                break;
+              case "interact":
+                alert("Interact with what?");
+                bazaar1();
+                break;
+              case "attack":
+                alert("Attack what?");
+                bazaar1();
+                break;
+              case "run":
+                alert("");
+                bazaar1();
+                break;
+              case "use":
+                alert("Use what?");
+                bazaar1();
+                break;
+              case "inventory":
+                alert(inventory);
+                bazaar1();
+                break;
+              case "i":
+                alert(inventory);
+                bazaar1();
+                break;
+              case "help":
+                alert("The objective of Forgotten Shores is to survive. In this game there are several commands that can be used to make that possible. Provided below are a list of the commands that can be used:\n\n"
+                     + "go north\n\n"
+                     + "go east\n\n"
+                     + "go south\n\n"
+                     + "go west\n\n"
+                     + "check ****: This allows you to check objects.\n\n"
+                     + "take ****: This puts objects in your inventory.\n\n"
+                     + "interact with ****: This allows interaction with objects.\n\n"
+                     + "use ****: This allows you to use objects in your inventory.\n\n"
+                     + "run: This allows you to run from enemies.\n\n"
+                     + "attack ****: This allows you to attack enemies.\n\n"
+                     + "inventory or i: This allows you to check your inventory.\n\n"
+                     + "There are no other commands.");
+                bazaar1();
+                break;   
+              default:
+                alert("That isn't possible. Please clarify your request.");
+                bazaar1();
+            }
+          }
+          
+          
+          function bazaar2() {
+            var shopping = prompt("\n\nWhat do you do?").toLowerCase();
+            
+            switch (shopping) {
+              case "go north":
+                alert("");
+                bazaar2();
+                break;
+              case "go east":
+                alert("");
+                bazaar2();
+                break;
+              case "go south":
+                alert("");
+                bazaar1();
+                break;
+              case "go west":
+                alert("");
+                bazaar2();
+                break;
+              case "check":
+                alert("Check what?");
+                bazaar2();
+                break;
+              case "take":
+                alert("Take what?");
+                bazaar2();
+                break;
+              case "interact":
+                alert("Interact with what?");
+                bazaar2();
+                break;
+              case "attack":
+                alert("Attack what?");
+                bazaar2();
+                break;
+              case "run":
+                alert("");
+                bazaar2();
+                break;
+              case "use":
+                alert("Use what?");
+                bazaar2();
+                break;
+              case "inventory":
+                alert(inventory);
+                bazaar2();
+                break;
+              case "i":
+                alert(inventory);
+                bazaar2();
+                break;
+              case "help":
+                alert("The objective of Forgotten Shores is to survive. In this game there are several commands that can be used to make that possible. Provided below are a list of the commands that can be used:\n\n"
+                     + "go north\n\n"
+                     + "go east\n\n"
+                     + "go south\n\n"
+                     + "go west\n\n"
+                     + "check ****: This allows you to check objects.\n\n"
+                     + "take ****: This puts objects in your inventory.\n\n"
+                     + "interact with ****: This allows interaction with objects.\n\n"
+                     + "use ****: This allows you to use objects in your inventory.\n\n"
+                     + "run: This allows you to run from enemies.\n\n"
+                     + "attack ****: This allows you to attack enemies.\n\n"
+                     + "inventory or i: This allows you to check your inventory.\n\n"
+                     + "There are no other commands.");
+                bazaar2();
+                break;   
+              default:
+                alert("That isn't possible. Please clarify your request.");
+                bazaar2();
+            }
+          }
+          
+          
+          function bazaar3() {
+            var shopping = prompt("\n\nWhat do you do?").toLowerCase();
+            
+            switch (shopping) {
+              case "go north":
+                alert("");
+                bazaar1();
+                break;
+              case "go east":
+                alert("");
+                bazaar3();
+                break;
+              case "go south":
+                alert("");
+                bazaar3();
+                break;
+              case "go west":
+                alert("");
+                bazaar3();
+                break;
+              case "check":
+                alert("Check what?");
+                bazaar3();
+                break;
+              case "take":
+                alert("Take what?");
+                bazaar3();
+                break;
+              case "interact":
+                alert("Interact with what?");
+                bazaar3();
+                break;
+              case "attack":
+                alert("Attack what?");
+                bazaar3();
+                break;
+              case "run":
+                alert("");
+                bazaar3();
+                break;
+              case "use":
+                alert("Use what?");
+                bazaar3();
+                break;
+              case "inventory":
+                alert(inventory);
+                bazaar3();
+                break;
+              case "i":
+                alert(inventory);
+                bazaar3();
+                break;
+              case "help":
+                alert("The objective of Forgotten Shores is to survive. In this game there are several commands that can be used to make that possible. Provided below are a list of the commands that can be used:\n\n"
+                     + "go north\n\n"
+                     + "go east\n\n"
+                     + "go south\n\n"
+                     + "go west\n\n"
+                     + "check ****: This allows you to check objects.\n\n"
+                     + "take ****: This puts objects in your inventory.\n\n"
+                     + "interact with ****: This allows interaction with objects.\n\n"
+                     + "use ****: This allows you to use objects in your inventory.\n\n"
+                     + "run: This allows you to run from enemies.\n\n"
+                     + "attack ****: This allows you to attack enemies.\n\n"
+                     + "inventory or i: This allows you to check your inventory.\n\n"
+                     + "There are no other commands.");
+                bazaar3();
+                break;   
+              default:
+                alert("That isn't possible. Please clarify your request.");
+                bazaar3();
+            }
+          }
+          
+          
+          function leaveTown() {
+            var leave = prompt("\n\nWhat do you do?").toLowerCase();
+            
+            switch (leave) {
+              case "go north":
+                alert("");
+                field2();
+                break;
+              case "go east":
+                alert("");
+                leaveTown();
+                break;
+              case "go south":
+                alert("");
+                townCenter();
+                break;
+              case "go west":
+                alert("");
+                leaveTown();
+                break;
+              case "check":
+                alert("Check what?");
+                leaveTown();
+                break;
+              case "take":
+                alert("Take what?");
+                leaveTown();
+                break;
+              case "interact":
+                alert("Interact with what?");
+                leaveTown();
+                break;
+              case "attack":
+                alert("Attack what?");
+                leaveTown();
+                break;
+              case "run":
+                alert("");
+                leaveTown();
+                break;
+              case "use":
+                alert("Use what?");
+                leaveTown();
+                break;
+              case "inventory":
+                alert(inventory);
+                leaveTown();
+                break;
+              case "i":
+                alert(inventory);
+                leaveTown();
+                break;
+              case "help":
+                alert("The objective of Forgotten Shores is to survive. In this game there are several commands that can be used to make that possible. Provided below are a list of the commands that can be used:\n\n"
+                     + "go north\n\n"
+                     + "go east\n\n"
+                     + "go south\n\n"
+                     + "go west\n\n"
+                     + "check ****: This allows you to check objects.\n\n"
+                     + "take ****: This puts objects in your inventory.\n\n"
+                     + "interact with ****: This allows interaction with objects.\n\n"
+                     + "use ****: This allows you to use objects in your inventory.\n\n"
+                     + "run: This allows you to run from enemies.\n\n"
+                     + "attack ****: This allows you to attack enemies.\n\n"
+                     + "inventory or i: This allows you to check your inventory.\n\n"
+                     + "There are no other commands.");
+                leaveTown();
+                break;   
+              default:
+                alert("That isn't possible. Please clarify your request.");
+                leaveTown();
+            }
+          }
+          
+          
+          
+          //----------------------------------- End of Town -----------------------------------
+          
+          
+          
+          function swampRoad() {
+            var toSwamp = prompt("\n\nWhat do you do?").toLowerCase();
+            
+            switch (toSwamp) {
+              case "go north":
+                alert("");
+                swampRoad();
+                break;
+              case "go east":
+                alert("");
+                swamp1();
+                break;
+              case "go south":
+                alert("");
+                swampRoad();
+                break;
+              case "go west":
+                alert("");
+                bazaar1();
+                break;
+              case "check":
+                alert("Check what?");
+                swampRoad();
+                break;
+              case "take":
+                alert("Take what?");
+                swampRoad();
+                break;
+              case "interact":
+                alert("Interact with what?");
+                swampRoad();
+                break;
+              case "attack":
+                alert("Attack what?");
+                swampRoad();
+                break;
+              case "run":
+                alert("");
+                swampRoad();
+                break;
+              case "use":
+                alert("Use what?");
+                swampRoad();
+                break;
+              case "inventory":
+                alert(inventory);
+                swampRoad();
+                break;
+              case "i":
+                alert(inventory);
+                swampRoad();
+                break;
+              case "help":
+                alert("The objective of Forgotten Shores is to survive. In this game there are several commands that can be used to make that possible. Provided below are a list of the commands that can be used:\n\n"
+                     + "go north\n\n"
+                     + "go east\n\n"
+                     + "go south\n\n"
+                     + "go west\n\n"
+                     + "check ****: This allows you to check objects.\n\n"
+                     + "take ****: This puts objects in your inventory.\n\n"
+                     + "interact with ****: This allows interaction with objects.\n\n"
+                     + "use ****: This allows you to use objects in your inventory.\n\n"
+                     + "run: This allows you to run from enemies.\n\n"
+                     + "attack ****: This allows you to attack enemies.\n\n"
+                     + "inventory or i: This allows you to check your inventory.\n\n"
+                     + "There are no other commands.");
+                swampRoad();
+                break;   
+              default:
+                alert("That isn't possible. Please clarify your request.");
+                swampRoad();
+            }
+          }
+          
+          
+          function swamp1() {
+            var swampness = prompt("\n\nWhat do you do?").toLowerCase();
+            
+            switch (swampness) {
+              case "go north":
+                alert("");
+                swamp1();
+                break;
+              case "go east":
+                alert("");
+                swamp2();
+                break;
+              case "go south":
+                alert("");
+                swamp1();
+                break;
+              case "go west":
+                alert("");
+                swampRoad();
+                break;
+              case "check":
+                alert("Check what?");
+                swamp1();
+                break;
+              case "take":
+                alert("Take what?");
+                swamp1();
+                break;
+              case "interact":
+                alert("Interact with what?");
+                swamp1();
+                break;
+              case "attack":
+                alert("Attack what?");
+                swamp1();
+                break;
+              case "run":
+                alert("");
+                swamp1();
+                break;
+              case "use":
+                alert("Use what?");
+                swamp1();
+                break;
+              case "inventory":
+                alert(inventory);
+                swamp1();
+                break;
+              case "i":
+                alert(inventory);
+                swamp1();
+                break;
+              case "help":
+                alert("The objective of Forgotten Shores is to survive. In this game there are several commands that can be used to make that possible. Provided below are a list of the commands that can be used:\n\n"
+                     + "go north\n\n"
+                     + "go east\n\n"
+                     + "go south\n\n"
+                     + "go west\n\n"
+                     + "check ****: This allows you to check objects.\n\n"
+                     + "take ****: This puts objects in your inventory.\n\n"
+                     + "interact with ****: This allows interaction with objects.\n\n"
+                     + "use ****: This allows you to use objects in your inventory.\n\n"
+                     + "run: This allows you to run from enemies.\n\n"
+                     + "attack ****: This allows you to attack enemies.\n\n"
+                     + "inventory or i: This allows you to check your inventory.\n\n"
+                     + "There are no other commands.");
+                swamp1();
+                break;   
+              default:
+                alert("That isn't possible. Please clarify your request.");
+                swamp1();
+            }
+          }
+          
+          
+          function swamp2() {
+            var swampy = prompt("\n\nWhat do you do?").toLowerCase();
+            
+            switch (swampy) {
+              case "go north":
+                alert("");
+                swamp3();
+                break;
+              case "go east":
+                alert("");
+                swamp5();
+                break;
+              case "go south":
+                alert("");
+                swamp4();
+                break;
+              case "go west":
+                alert("");
+                swamp1();
+                break;
+              case "check":
+                alert("Check what?");
+                swamp2();
+                break;
+              case "take":
+                alert("Take what?");
+                swamp2();
+                break;
+              case "interact":
+                alert("Interact with what?");
+                swamp2();
+                break;
+              case "attack":
+                alert("Attack what?");
+                swamp2();
+                break;
+              case "run":
+                alert("");
+                swamp2();
+                break;
+              case "use":
+                alert("Use what?");
+                swamp2();
+                break;
+              case "inventory":
+                alert(inventory);
+                swamp2();
+                break;
+              case "i":
+                alert(inventory);
+                swamp2();
+                break;
+              case "help":
+                alert("The objective of Forgotten Shores is to survive. In this game there are several commands that can be used to make that possible. Provided below are a list of the commands that can be used:\n\n"
+                     + "go north\n\n"
+                     + "go east\n\n"
+                     + "go south\n\n"
+                     + "go west\n\n"
+                     + "check ****: This allows you to check objects.\n\n"
+                     + "take ****: This puts objects in your inventory.\n\n"
+                     + "interact with ****: This allows interaction with objects.\n\n"
+                     + "use ****: This allows you to use objects in your inventory.\n\n"
+                     + "run: This allows you to run from enemies.\n\n"
+                     + "attack ****: This allows you to attack enemies.\n\n"
+                     + "inventory or i: This allows you to check your inventory.\n\n"
+                     + "There are no other commands.");
+                swamp2();
+                break;   
+              default:
+                alert("That isn't possible. Please clarify your request.");
+                swamp2();
+            }
+          }
+          
+          
+          function swamp3() {
+            var swampy = prompt("\n\nWhat do you do?").toLowerCase();
+            
+            switch (swampy) {
+              case "go north":
+                alert("");
+                swamp3();
+                break;
+              case "go east":
+                alert("");
+                swamp3();
+                break;
+              case "go south":
+                alert("");
+                swamp2();
+                break;
+              case "go west":
+                alert("");
+                swamp3();
+                break;
+              case "check":
+                alert("Check what?");
+                swamp3();
+                break;
+              case "take":
+                alert("Take what?");
+                swamp3();
+                break;
+              case "interact":
+                alert("Interact with what?");
+                swamp3();
+                break;
+              case "attack":
+                alert("Attack what?");
+                swamp3();
+                break;
+              case "run":
+                alert("");
+                swamp3();
+                break;
+              case "use":
+                alert("Use what?");
+                swamp3();
+                break;
+              case "inventory":
+                alert(inventory);
+                swamp3();
+                break;
+              case "i":
+                alert(inventory);
+                swamp3();
+                break;
+              case "help":
+                alert("The objective of Forgotten Shores is to survive. In this game there are several commands that can be used to make that possible. Provided below are a list of the commands that can be used:\n\n"
+                     + "go north\n\n"
+                     + "go east\n\n"
+                     + "go south\n\n"
+                     + "go west\n\n"
+                     + "check ****: This allows you to check objects.\n\n"
+                     + "take ****: This puts objects in your inventory.\n\n"
+                     + "interact with ****: This allows interaction with objects.\n\n"
+                     + "use ****: This allows you to use objects in your inventory.\n\n"
+                     + "run: This allows you to run from enemies.\n\n"
+                     + "attack ****: This allows you to attack enemies.\n\n"
+                     + "inventory or i: This allows you to check your inventory.\n\n"
+                     + "There are no other commands.");
+                swamp3();
+                break;   
+              default:
+                alert("That isn't possible. Please clarify your request.");
+                swamp3();
+            }
+          }
+          
+          
+          function swamp4() {
+            var swampy = prompt("\n\nWhat do you do?").toLowerCase();
+            
+            switch (swampy) {
+              case "go north":
+                alert("");
+                swamp2();
+                break;
+              case "go east":
+                alert("");
+                swamp4();
+                break;
+              case "go south":
+                alert("");
+                swamp4();
+                break;
+              case "go west":
+                alert("");
+                swamp4();
+                break;
+              case "check":
+                alert("Check what?");
+                swamp4();
+                break;
+              case "take":
+                alert("Take what?");
+                swamp4();
+                break;
+              case "interact":
+                alert("Interact with what?");
+                swamp4();
+                break;
+              case "attack":
+                alert("Attack what?");
+                swamp4();
+                break;
+              case "run":
+                alert("");
+                swamp4();
+                break;
+              case "use":
+                alert("Use what?");
+                swamp4();
+                break;
+              case "inventory":
+                alert(inventory);
+                swamp4();
+                break;
+              case "i":
+                alert(inventory);
+                swamp4();
+                break;
+              case "help":
+                alert("The objective of Forgotten Shores is to survive. In this game there are several commands that can be used to make that possible. Provided below are a list of the commands that can be used:\n\n"
+                     + "go north\n\n"
+                     + "go east\n\n"
+                     + "go south\n\n"
+                     + "go west\n\n"
+                     + "check ****: This allows you to check objects.\n\n"
+                     + "take ****: This puts objects in your inventory.\n\n"
+                     + "interact with ****: This allows interaction with objects.\n\n"
+                     + "use ****: This allows you to use objects in your inventory.\n\n"
+                     + "run: This allows you to run from enemies.\n\n"
+                     + "attack ****: This allows you to attack enemies.\n\n"
+                     + "inventory or i: This allows you to check your inventory.\n\n"
+                     + "There are no other commands.");
+                swamp4();
+                break;   
+              default:
+                alert("That isn't possible. Please clarify your request.");
+                swamp4();
+            }
+          }
+          
+          
+          function swamp5() {
+            var swampy = prompt("\n\nWhat do you do?").toLowerCase();
+            
+            switch (swampy) {
+              case "go north":
+                alert("");
+                swamp5();
+                break;
+              case "go east":
+                alert("");
+                cemetary1();
+                break;
+              case "go south":
+                alert("");
+                swamp5();
+                break;
+              case "go west":
+                alert("");
+                swamp2();
+                break;
+              case "check":
+                alert("Check what?");
+                swamp5();
+                break;
+              case "take":
+                alert("Take what?");
+                swamp5();
+                break;
+              case "interact":
+                alert("Interact with what?");
+                swamp5();
+                break;
+              case "attack":
+                alert("Attack what?");
+                swamp5();
+                break;
+              case "run":
+                alert("");
+                swamp5();
+                break;
+              case "use":
+                alert("Use what?");
+                swamp5();
+                break;
+              case "inventory":
+                alert(inventory);
+                swamp5();
+                break;
+              case "i":
+                alert(inventory);
+                swamp5();
+                break;
+              case "help":
+                alert("The objective of Forgotten Shores is to survive. In this game there are several commands that can be used to make that possible. Provided below are a list of the commands that can be used:\n\n"
+                     + "go north\n\n"
+                     + "go east\n\n"
+                     + "go south\n\n"
+                     + "go west\n\n"
+                     + "check ****: This allows you to check objects.\n\n"
+                     + "take ****: This puts objects in your inventory.\n\n"
+                     + "interact with ****: This allows interaction with objects.\n\n"
+                     + "use ****: This allows you to use objects in your inventory.\n\n"
+                     + "run: This allows you to run from enemies.\n\n"
+                     + "attack ****: This allows you to attack enemies.\n\n"
+                     + "inventory or i: This allows you to check your inventory.\n\n"
+                     + "There are no other commands.");
+                swamp5();
+                break;   
+              default:
+                alert("That isn't possible. Please clarify your request.");
+                swamp5();
+            }
+          }
+          
+          
+          //----------------------------------------- End of Swamp --------------------------------------
+          
+          
+          function cemetary1() {
+            var graves = prompt("\n\nWhat do you do?").toLowerCase();
+            
+            switch (graves) {
+              case "go north":
+                alert("");
+                cemetary2();
+                break;
+              case "go east":
+                alert("");
+                cemetary1();
+                break;
+              case "go south":
+                alert("");
+                cemetary3();
+                break;
+              case "go west":
+                alert("");
+                swamp5();
+                break;
+              case "check":
+                alert("Check what?");
+                cemetary1();
+                break;
+              case "take":
+                alert("Take what?");
+                cemetary1();
+                break;
+              case "interact":
+                alert("Interact with what?");
+                cemetary1();
+                break;
+              case "attack":
+                alert("Attack what?");
+                cemetary1();
+                break;
+              case "run":
+                alert("");
+                cemetary1();
+                break;
+              case "use":
+                alert("Use what?");
+                cemetary1();
+                break;
+              case "inventory":
+                alert(inventory);
+                cemetary1();
+                break;
+              case "i":
+                alert(inventory);
+                cemetary1();
+                break;
+              case "help":
+                alert("The objective of Forgotten Shores is to survive. In this game there are several commands that can be used to make that possible. Provided below are a list of the commands that can be used:\n\n"
+                     + "go north\n\n"
+                     + "go east\n\n"
+                     + "go south\n\n"
+                     + "go west\n\n"
+                     + "check ****: This allows you to check objects.\n\n"
+                     + "take ****: This puts objects in your inventory.\n\n"
+                     + "interact with ****: This allows interaction with objects.\n\n"
+                     + "use ****: This allows you to use objects in your inventory.\n\n"
+                     + "run: This allows you to run from enemies.\n\n"
+                     + "attack ****: This allows you to attack enemies.\n\n"
+                     + "inventory or i: This allows you to check your inventory.\n\n"
+                     + "There are no other commands.");
+                cemetary1();
+                break;   
+              default:
+                alert("That isn't possible. Please clarify your request.");
+                cemetary1();
+            }
+          }
+          
+          
+          function cemetary2() {
+            var graves = prompt("\n\nWhat do you do?").toLowerCase();
+            
+            switch (graves) {
+              case "go north":
+                alert("");
+                cemetary2();
+                break;
+              case "go east":
+                alert("");
+                cemetary4();
+                break;
+              case "go south":
+                alert("");
+                cemetary1();
+                break;
+              case "go west":
+                alert("");
+                cemetary2();
+                break;
+              case "check":
+                alert("Check what?");
+                cemetary2();
+                break;
+              case "take":
+                alert("Take what?");
+                cemetary2();
+                break;
+              case "interact":
+                alert("Interact with what?");
+                cemetary2();
+                break;
+              case "attack":
+                alert("Attack what?");
+                cemetary2();
+                break;
+              case "run":
+                alert("");
+                cemetary2();
+                break;
+              case "use":
+                alert("Use what?");
+                cemetary2();
+                break;
+              case "inventory":
+                alert(inventory);
+                cemetary2();
+                break;
+              case "i":
+                alert(inventory);
+                cemetary2();
+                break;
+              case "help":
+                alert("The objective of Forgotten Shores is to survive. In this game there are several commands that can be used to make that possible. Provided below are a list of the commands that can be used:\n\n"
+                     + "go north\n\n"
+                     + "go east\n\n"
+                     + "go south\n\n"
+                     + "go west\n\n"
+                     + "check ****: This allows you to check objects.\n\n"
+                     + "take ****: This puts objects in your inventory.\n\n"
+                     + "interact with ****: This allows interaction with objects.\n\n"
+                     + "use ****: This allows you to use objects in your inventory.\n\n"
+                     + "run: This allows you to run from enemies.\n\n"
+                     + "attack ****: This allows you to attack enemies.\n\n"
+                     + "inventory or i: This allows you to check your inventory.\n\n"
+                     + "There are no other commands.");
+                cemetary2();
+                break;   
+              default:
+                alert("That isn't possible. Please clarify your request.");
+                cemetary2();
+            }
+          }
+          
+          
+          function cemetary3() {
+            var graves = prompt("\n\nWhat do you do?").toLowerCase();
+            
+            switch (graves) {
+              case "go north":
+                alert("");
+                cemetary1();
+                break;
+              case "go east":
+                alert("");
+                cemetary5();
+                break;
+              case "go south":
+                alert("");
+                cemetary3();
+                break;
+              case "go west":
+                alert("");
+                cemetary3();
+                break;
+              case "check":
+                alert("Check what?");
+                cemetary3();
+                break;
+              case "take":
+                alert("Take what?");
+                cemetary3();
+                break;
+              case "interact":
+                alert("Interact with what?");
+                cemetary3();
+                break;
+              case "attack":
+                alert("Attack what?");
+                cemetary3();
+                break;
+              case "run":
+                alert("");
+                cemetary3();
+                break;
+              case "use":
+                alert("Use what?");
+                cemetary3();
+                break;
+              case "inventory":
+                alert(inventory);
+                cemetary3();
+                break;
+              case "i":
+                alert(inventory);
+                cemetary3();
+                break;
+              case "help":
+                alert("The objective of Forgotten Shores is to survive. In this game there are several commands that can be used to make that possible. Provided below are a list of the commands that can be used:\n\n"
+                     + "go north\n\n"
+                     + "go east\n\n"
+                     + "go south\n\n"
+                     + "go west\n\n"
+                     + "check ****: This allows you to check objects.\n\n"
+                     + "take ****: This puts objects in your inventory.\n\n"
+                     + "interact with ****: This allows interaction with objects.\n\n"
+                     + "use ****: This allows you to use objects in your inventory.\n\n"
+                     + "run: This allows you to run from enemies.\n\n"
+                     + "attack ****: This allows you to attack enemies.\n\n"
+                     + "inventory or i: This allows you to check your inventory.\n\n"
+                     + "There are no other commands.");
+                cemetary3();
+                break;   
+              default:
+                alert("That isn't possible. Please clarify your request.");
+                cemetary3();
+            }
+          }
+          
+          
+          function cemetary4() {
+            var graves = prompt("\n\nWhat do you do?").toLowerCase();
+            
+            switch (graves) {
+              case "go north":
+                alert("");
+                cemetary4();
+                break;
+              case "go east":
+                alert("");
+                cemetary6();
+                break;
+              case "go south":
+                alert("");
+                cemetary4();
+                break;
+              case "go west":
+                alert("");
+                cemetary2();
+                break;
+              case "check":
+                alert("Check what?");
+                cemetary4();
+                break;
+              case "take":
+                alert("Take what?");
+                cemetary4();
+                break;
+              case "interact":
+                alert("Interact with what?");
+                cemetary4();
+                break;
+              case "attack":
+                alert("Attack what?");
+                cemetary4();
+                break;
+              case "run":
+                alert("");
+                cemetary4();
+                break;
+              case "use":
+                alert("Use what?");
+                cemetary4();
+                break;
+              case "inventory":
+                alert(inventory);
+                cemetary4();
+                break;
+              case "i":
+                alert(inventory);
+                cemetary4();
+                break;
+              case "help":
+                alert("The objective of Forgotten Shores is to survive. In this game there are several commands that can be used to make that possible. Provided below are a list of the commands that can be used:\n\n"
+                     + "go north\n\n"
+                     + "go east\n\n"
+                     + "go south\n\n"
+                     + "go west\n\n"
+                     + "check ****: This allows you to check objects.\n\n"
+                     + "take ****: This puts objects in your inventory.\n\n"
+                     + "interact with ****: This allows interaction with objects.\n\n"
+                     + "use ****: This allows you to use objects in your inventory.\n\n"
+                     + "run: This allows you to run from enemies.\n\n"
+                     + "attack ****: This allows you to attack enemies.\n\n"
+                     + "inventory or i: This allows you to check your inventory.\n\n"
+                     + "There are no other commands.");
+                cemetary4();
+                break;   
+              default:
+                alert("That isn't possible. Please clarify your request.");
+                cemetary4();
+            }
+          }
+          
+          
+          function cemetary5() {
+            var graves = prompt("\n\nWhat do you do?").toLowerCase();
+            
+            switch (graves) {
+              case "go north":
+                alert("");
+                mausoleum();
+                break;
+              case "go east":
+                alert("");
+                cemetary7();
+                break;
+              case "go south":
+                alert("");
+                cemetary5();
+                break;
+              case "go west":
+                alert("");
+                cemetary3();
+                break;
+              case "check":
+                alert("Check what?");
+                cemetary5();
+                break;
+              case "take":
+                alert("Take what?");
+                cemetary5();
+                break;
+              case "interact":
+                alert("Interact with what?");
+                cemetary5();
+                break;
+              case "attack":
+                alert("Attack what?");
+                cemetary5();
+                break;
+              case "run":
+                alert("");
+                cemetary5();
+                break;
+              case "use":
+                alert("Use what?");
+                cemetary5();
+                break;
+              case "inventory":
+                alert(inventory);
+                cemetary5();
+                break;
+              case "i":
+                alert(inventory);
+                cemetary5();
+                break;
+              case "help":
+                alert("The objective of Forgotten Shores is to survive. In this game there are several commands that can be used to make that possible. Provided below are a list of the commands that can be used:\n\n"
+                     + "go north\n\n"
+                     + "go east\n\n"
+                     + "go south\n\n"
+                     + "go west\n\n"
+                     + "check ****: This allows you to check objects.\n\n"
+                     + "take ****: This puts objects in your inventory.\n\n"
+                     + "interact with ****: This allows interaction with objects.\n\n"
+                     + "use ****: This allows you to use objects in your inventory.\n\n"
+                     + "run: This allows you to run from enemies.\n\n"
+                     + "attack ****: This allows you to attack enemies.\n\n"
+                     + "inventory or i: This allows you to check your inventory.\n\n"
+                     + "There are no other commands.");
+                cemetary5();
+                break;   
+              default:
+                alert("That isn't possible. Please clarify your request.");
+                cemetary5();
+            }
+          }
+          
+          
+          function cemetary6() {
+            var graves = prompt("\n\nWhat do you do?").toLowerCase();
+            
+            switch (graves) {
+              case "go north":
+                alert("");
+                cemetary6();
+                break;
+              case "go east":
+                alert("");
+                cemetary6();
+                break;
+              case "go south":
+                alert("");
+                cemetary8();
+                break;
+              case "go west":
+                alert("");
+                cemetary4();
+                break;
+              case "check":
+                alert("Check what?");
+                cemetary6();
+                break;
+              case "take":
+                alert("Take what?");
+                cemetary6();
+                break;
+              case "interact":
+                alert("Interact with what?");
+                cemetary6();
+                break;
+              case "attack":
+                alert("Attack what?");
+                cemetary6();
+                break;
+              case "run":
+                alert("");
+                cemetary6();
+                break;
+              case "use":
+                alert("Use what?");
+                cemetary6();
+                break;
+              case "inventory":
+                alert(inventory);
+                cemetary6();
+                break;
+              case "i":
+                alert(inventory);
+                cemetary6();
+                break;
+              case "help":
+                alert("The objective of Forgotten Shores is to survive. In this game there are several commands that can be used to make that possible. Provided below are a list of the commands that can be used:\n\n"
+                     + "go north\n\n"
+                     + "go east\n\n"
+                     + "go south\n\n"
+                     + "go west\n\n"
+                     + "check ****: This allows you to check objects.\n\n"
+                     + "take ****: This puts objects in your inventory.\n\n"
+                     + "interact with ****: This allows interaction with objects.\n\n"
+                     + "use ****: This allows you to use objects in your inventory.\n\n"
+                     + "run: This allows you to run from enemies.\n\n"
+                     + "attack ****: This allows you to attack enemies.\n\n"
+                     + "inventory or i: This allows you to check your inventory.\n\n"
+                     + "There are no other commands.");
+                cemetary6();
+                break;   
+              default:
+                alert("That isn't possible. Please clarify your request.");
+                cemetary6();
+            }
+          }
+          
+          
+          function cemetary7() {
+            var graves = prompt("\n\nWhat do you do?").toLowerCase();
+            
+            switch (graves) {
+              case "go north":
+                alert("");
+                cemetary8();
+                break;
+              case "go east":
+                alert("");
+                cemetary7();
+                break;
+              case "go south":
+                alert("");
+                cemetary7();
+                break;
+              case "go west":
+                alert("");
+                cemetary5();
+                break;
+              case "check":
+                alert("Check what?");
+                cemetary7();
+                break;
+              case "take":
+                alert("Take what?");
+                cemetary7();
+                break;
+              case "interact":
+                alert("Interact with what?");
+                cemetary7();
+                break;
+              case "attack":
+                alert("Attack what?");
+                cemetary7();
+                break;
+              case "run":
+                alert("");
+                cemetary7();
+                break;
+              case "use":
+                alert("Use what?");
+                cemetary7();
+                break;
+              case "inventory":
+                alert(inventory);
+                cemetary7();
+                break;
+              case "i":
+                alert(inventory);
+                cemetary7();
+                break;
+              case "help":
+                alert("The objective of Forgotten Shores is to survive. In this game there are several commands that can be used to make that possible. Provided below are a list of the commands that can be used:\n\n"
+                     + "go north\n\n"
+                     + "go east\n\n"
+                     + "go south\n\n"
+                     + "go west\n\n"
+                     + "check ****: This allows you to check objects.\n\n"
+                     + "take ****: This puts objects in your inventory.\n\n"
+                     + "interact with ****: This allows interaction with objects.\n\n"
+                     + "use ****: This allows you to use objects in your inventory.\n\n"
+                     + "run: This allows you to run from enemies.\n\n"
+                     + "attack ****: This allows you to attack enemies.\n\n"
+                     + "inventory or i: This allows you to check your inventory.\n\n"
+                     + "There are no other commands.");
+                cemetary7();
+                break;   
+              default:
+                alert("That isn't possible. Please clarify your request.");
+                cemetary7();
+            }
+          }
+          
+          
+          function cemetary8() {
+            var graves = prompt("\n\nWhat do you do?").toLowerCase();
+            
+            switch (graves) {
+              case "go north":
+                alert("");
+                cemetary6();
+                break;
+              case "go east":
+                alert("");
+                cemetary8();
+                break;
+              case "go south":
+                alert("");
+                cemetary7();
+                break;
+              case "go west":
+                alert("");
+                cemetary8();
+                break;
+              case "check":
+                alert("Check what?");
+                cemetary8();
+                break;
+              case "take":
+                alert("Take what?");
+                cemetary8();
+                break;
+              case "interact":
+                alert("Interact with what?");
+                cemetary8();
+                break;
+              case "attack":
+                alert("Attack what?");
+                cemetary8();
+                break;
+              case "run":
+                alert("");
+                cemetary8();
+                break;
+              case "use":
+                alert("Use what?");
+                cemetary8();
+                break;
+              case "inventory":
+                alert(inventory);
+                cemetary8();
+                break;
+              case "i":
+                alert(inventory);
+                cemetary8();
+                break;
+              case "help":
+                alert("The objective of Forgotten Shores is to survive. In this game there are several commands that can be used to make that possible. Provided below are a list of the commands that can be used:\n\n"
+                     + "go north\n\n"
+                     + "go east\n\n"
+                     + "go south\n\n"
+                     + "go west\n\n"
+                     + "check ****: This allows you to check objects.\n\n"
+                     + "take ****: This puts objects in your inventory.\n\n"
+                     + "interact with ****: This allows interaction with objects.\n\n"
+                     + "use ****: This allows you to use objects in your inventory.\n\n"
+                     + "run: This allows you to run from enemies.\n\n"
+                     + "attack ****: This allows you to attack enemies.\n\n"
+                     + "inventory or i: This allows you to check your inventory.\n\n"
+                     + "There are no other commands.");
+                cemetary8();
+                break;   
+              default:
+                alert("That isn't possible. Please clarify your request.");
+                cemetary8();
+            }
+          }
+          
+          
+          function mausoleum() {
+            var graves = prompt("\n\nWhat do you do?").toLowerCase();
+            
+            switch (graves) {
+              case "go north":
+                alert("");
+                crypt();
+                break;
+              case "go east":
+                alert("");
+                mausoleum();
+                break;
+              case "go south":
+                alert("");
+                cemetary5();
+                break;
+              case "go west":
+                alert("");
+                mausoleum();
+                break;
+              case "check":
+                alert("Check what?");
+                mausoleum();
+                break;
+              case "take":
+                alert("Take what?");
+                mausoleum();
+                break;
+              case "interact":
+                alert("Interact with what?");
+                mausoleum();
+                break;
+              case "attack":
+                alert("Attack what?");
+                mausoleum();
+                break;
+              case "run":
+                alert("");
+                mausoleum();
+                break;
+              case "use":
+                alert("Use what?");
+                mausoleum();
+                break;
+              case "inventory":
+                alert(inventory);
+                mausoleum();
+                break;
+              case "i":
+                alert(inventory);
+                mausoleum();
+                break;
+              case "help":
+                alert("The objective of Forgotten Shores is to survive. In this game there are several commands that can be used to make that possible. Provided below are a list of the commands that can be used:\n\n"
+                     + "go north\n\n"
+                     + "go east\n\n"
+                     + "go south\n\n"
+                     + "go west\n\n"
+                     + "check ****: This allows you to check objects.\n\n"
+                     + "take ****: This puts objects in your inventory.\n\n"
+                     + "interact with ****: This allows interaction with objects.\n\n"
+                     + "use ****: This allows you to use objects in your inventory.\n\n"
+                     + "run: This allows you to run from enemies.\n\n"
+                     + "attack ****: This allows you to attack enemies.\n\n"
+                     + "inventory or i: This allows you to check your inventory.\n\n"
+                     + "There are no other commands.");
+                mausoleum();
+                break;   
+              default:
+                alert("That isn't possible. Please clarify your request.");
+                mausoleum();
+            }
+          }
+          
+          
+          function crypt() {
+            var tombs = prompt("\n\nWhat do you do?").toLowerCase();
+            
+            switch (tombs) {
+              case "go north":
+                alert("");
+                crypt();
+                break;
+              case "go east":
+                alert("");
+                crypt();
+                break;
+              case "go south":
+                alert("");
+                mausoleum();
+                break;
+              case "go west":
+                alert("");
+                crypt();
+                break;
+              case "check":
+                alert("Check what?");
+                crypt();
+                break;
+              case "take":
+                alert("Take what?");
+                crypt();
+                break;
+              case "interact":
+                alert("Interact with what?");
+                crypt();
+                break;
+              case "attack":
+                alert("Attack what?");
+                crypt();
+                break;
+              case "run":
+                alert("");
+                crypt();
+                break;
+              case "use":
+                alert("Use what?");
+                crypt();
+                break;
+              case "inventory":
+                alert(inventory);
+                crypt();
+                break;
+              case "i":
+                alert(inventory);
+                crypt();
+                break;
+              case "help":
+                alert("The objective of Forgotten Shores is to survive. In this game there are several commands that can be used to make that possible. Provided below are a list of the commands that can be used:\n\n"
+                     + "go north\n\n"
+                     + "go east\n\n"
+                     + "go south\n\n"
+                     + "go west\n\n"
+                     + "check ****: This allows you to check objects.\n\n"
+                     + "take ****: This puts objects in your inventory.\n\n"
+                     + "interact with ****: This allows interaction with objects.\n\n"
+                     + "use ****: This allows you to use objects in your inventory.\n\n"
+                     + "run: This allows you to run from enemies.\n\n"
+                     + "attack ****: This allows you to attack enemies.\n\n"
+                     + "inventory or i: This allows you to check your inventory.\n\n"
+                     + "There are no other commands.");
+                crypt();
+                break;   
+              default:
+                alert("That isn't possible. Please clarify your request.");
+                crypt();
+            }
+          }
+          
+          
+          //----------------------------------------- End of Cemetary ------------------------------------
+          
+          
+          
+          function field2() {
+            var travel = prompt("\n\nWhat do you do?").toLowerCase();
+            
+            switch (travel) {
+              case "go north":
+                alert("");
+                residence();
+                break;
+              case "go east":
+                alert("");
+                field2();
+                break;
+              case "go south":
+                alert("");
+                leaveTown();
+                break;
+              case "go west":
+                alert("");
+                field2();
+                break;
+              case "check":
+                alert("Check what?");
+                field2();
+                break;
+              case "take":
+                alert("Take what?");
+                field2();
+                break;
+              case "interact":
+                alert("Interact with what?");
+                field2();
+                break;
+              case "attack":
+                alert("Attack what?");
+                field2();
+                break;
+              case "run":
+                alert("");
+                field2();
+                break;
+              case "use":
+                alert("Use what?");
+                field2();
+                break;
+              case "inventory":
+                alert(inventory);
+                field2();
+                break;
+              case "i":
+                alert(inventory);
+                field2();
+                break;
+              case "help":
+                alert("The objective of Forgotten Shores is to survive. In this game there are several commands that can be used to make that possible. Provided below are a list of the commands that can be used:\n\n"
+                     + "go north\n\n"
+                     + "go east\n\n"
+                     + "go south\n\n"
+                     + "go west\n\n"
+                     + "check ****: This allows you to check objects.\n\n"
+                     + "take ****: This puts objects in your inventory.\n\n"
+                     + "interact with ****: This allows interaction with objects.\n\n"
+                     + "use ****: This allows you to use objects in your inventory.\n\n"
+                     + "run: This allows you to run from enemies.\n\n"
+                     + "attack ****: This allows you to attack enemies.\n\n"
+                     + "inventory or i: This allows you to check your inventory.\n\n"
+                     + "There are no other commands.");
+                field2();
+                break;   
+              default:
+                alert("That isn't possible. Please clarify your request.");
+                field2();
+            }
+          }
+          
+          
+          function residence() {
+            var travel = prompt("\n\nWhat do you do?").toLowerCase();
+            
+            switch (travel) {
+              case "go north":
+                alert("");
+                road2();
+                break;
+              case "go east":
+                alert("");
+                residence2();
+                break;
+              case "go south":
+                alert("");
+                field2();
+                break;
+              case "go west":
+                alert("");
+                residence();
+                break;
+              case "check":
+                alert("Check what?");
+                residence();
+                break;
+              case "take":
+                alert("Take what?");
+                residence();
+                break;
+              case "interact":
+                alert("Interact with what?");
+                residence();
+                break;
+              case "attack":
+                alert("Attack what?");
+                residence();
+                break;
+              case "run":
+                alert("");
+                residence();
+                break;
+              case "use":
+                alert("Use what?");
+                residence();
+                break;
+              case "inventory":
+                alert(inventory);
+                residence();
+                break;
+              case "i":
+                alert(inventory);
+                residence();
+                break;
+              case "help":
+                alert("The objective of Forgotten Shores is to survive. In this game there are several commands that can be used to make that possible. Provided below are a list of the commands that can be used:\n\n"
+                     + "go north\n\n"
+                     + "go east\n\n"
+                     + "go south\n\n"
+                     + "go west\n\n"
+                     + "check ****: This allows you to check objects.\n\n"
+                     + "take ****: This puts objects in your inventory.\n\n"
+                     + "interact with ****: This allows interaction with objects.\n\n"
+                     + "use ****: This allows you to use objects in your inventory.\n\n"
+                     + "run: This allows you to run from enemies.\n\n"
+                     + "attack ****: This allows you to attack enemies.\n\n"
+                     + "inventory or i: This allows you to check your inventory.\n\n"
+                     + "There are no other commands.");
+                residence();
+                break;   
+              default:
+                alert("That isn't possible. Please clarify your request.");
+                residence();
+            }
+          }
+          
+          
+          function house() {
+            var home = prompt("\n\nWhat do you do?").toLowerCase();
+            
+            switch (home) {
+              case "go north":
+                alert("");
+                house();
+                break;
+              case "go east":
+                alert("");
+                house();
+                break;
+              case "go south":
+                alert("");
+                house();
+                break;
+              case "go west":
+                alert("");
+                residence();
+                break;
+              case "check":
+                alert("Check what?");
+                house();
+                break;
+              case "take":
+                alert("Take what?");
+                house();
+                break;
+              case "interact":
+                alert("Interact with what?");
+                house();
+                break;
+              case "attack":
+                alert("Attack what?");
+                house();
+                break;
+              case "run":
+                alert("");
+                house();
+                break;
+              case "use":
+                alert("Use what?");
+                house();
+                break;
+              case "inventory":
+                alert(inventory);
+                house();
+                break;
+              case "i":
+                alert(inventory);
+                house();
+                break;
+              case "help":
+                alert("The objective of Forgotten Shores is to survive. In this game there are several commands that can be used to make that possible. Provided below are a list of the commands that can be used:\n\n"
+                     + "go north\n\n"
+                     + "go east\n\n"
+                     + "go south\n\n"
+                     + "go west\n\n"
+                     + "check ****: This allows you to check objects.\n\n"
+                     + "take ****: This puts objects in your inventory.\n\n"
+                     + "interact with ****: This allows interaction with objects.\n\n"
+                     + "use ****: This allows you to use objects in your inventory.\n\n"
+                     + "run: This allows you to run from enemies.\n\n"
+                     + "attack ****: This allows you to attack enemies.\n\n"
+                     + "inventory or i: This allows you to check your inventory.\n\n"
+                     + "There are no other commands.");
+                house();
+                break;   
+              default:
+                alert("That isn't possible. Please clarify your request.");
+                house();
+            }
+          }
+          
+          
+          function road2() {
+            var travel = prompt("\n\nWhat do you do?").toLowerCase();
+            
+            switch (travel) {
+              case "go north":
+                alert("");
+                gate();
+                break;
+              case "go east":
+                alert("");
+                road2();
+                break;
+              case "go south":
+                alert("");
+                residence();
+                break;
+              case "go west":
+                alert("");
+                road2();
+                break;
+              case "check":
+                alert("Check what?");
+                road2();
+                break;
+              case "take":
+                alert("Take what?");
+                road2();
+                break;
+              case "interact":
+                alert("Interact with what?");
+                road2();
+                break;
+              case "attack":
+                alert("Attack what?");
+                road2();
+                break;
+              case "run":
+                alert("");
+                road2();
+                break;
+              case "use":
+                alert("Use what?");
+                road2();
+                break;
+              case "inventory":
+                alert(inventory);
+                road2();
+                break;
+              case "i":
+                alert(inventory);
+                road2();
+                break;
+              case "help":
+                alert("The objective of Forgotten Shores is to survive. In this game there are several commands that can be used to make that possible. Provided below are a list of the commands that can be used:\n\n"
+                     + "go north\n\n"
+                     + "go east\n\n"
+                     + "go south\n\n"
+                     + "go west\n\n"
+                     + "check ****: This allows you to check objects.\n\n"
+                     + "take ****: This puts objects in your inventory.\n\n"
+                     + "interact with ****: This allows interaction with objects.\n\n"
+                     + "use ****: This allows you to use objects in your inventory.\n\n"
+                     + "run: This allows you to run from enemies.\n\n"
+                     + "attack ****: This allows you to attack enemies.\n\n"
+                     + "inventory or i: This allows you to check your inventory.\n\n"
+                     + "There are no other commands.");
+                road2();
+                break;   
+              default:
+                alert("That isn't possible. Please clarify your request.");
+                road2();
+            }
+          }
+          
+          
+          function gate() {
+            var castleGate = prompt("\n\nWhat do you do?").toLowerCase();
+            
+            switch (castleGate) {
+              case "go north":
+                alert("");
+                entry();
+                break;
+              case "go east":
+                alert("");
+                gate();
+                break;
+              case "go south":
+                alert("");
+                road2();
+                break;
+              case "go west":
+                alert("");
+                gate();
+                break;
+              case "check":
+                alert("Check what?");
+                gate();
+                break;
+              case "take":
+                alert("Take what?");
+                gate();
+                break;
+              case "interact":
+                alert("Interact with what?");
+                gate();
+                break;
+              case "attack":
+                alert("Attack what?");
+                gate();
+                break;
+              case "run":
+                alert("");
+                gate();
+                break;
+              case "use":
+                alert("Use what?");
+                gate();
+                break;
+              case "inventory":
+                alert(inventory);
+                gate();
+                break;
+              case "i":
+                alert(inventory);
+                gate();
+                break;
+              case "help":
+                alert("The objective of Forgotten Shores is to survive. In this game there are several commands that can be used to make that possible. Provided below are a list of the commands that can be used:\n\n"
+                     + "go north\n\n"
+                     + "go east\n\n"
+                     + "go south\n\n"
+                     + "go west\n\n"
+                     + "check ****: This allows you to check objects.\n\n"
+                     + "take ****: This puts objects in your inventory.\n\n"
+                     + "interact with ****: This allows interaction with objects.\n\n"
+                     + "use ****: This allows you to use objects in your inventory.\n\n"
+                     + "run: This allows you to run from enemies.\n\n"
+                     + "attack ****: This allows you to attack enemies.\n\n"
+                     + "inventory or i: This allows you to check your inventory.\n\n"
+                     + "There are no other commands.");
+                gate();
+                break;   
+              default:
+                alert("That isn't possible. Please clarify your request.");
+                gate();
+            }
+          }
+          
+          
+          
+          //-------------------------------------- Start of Castle ----------------------------------------
+          
+          
+          
+          function entry() {
+            var castleFront = prompt("\n\nWhat do you do?").toLowerCase();
+            
+            switch (castleFront) {
+              case "go north":
+                alert("");
+                courtyard();
+                break;
+              case "go east":
+                alert("");
+                wall1();
+                break;
+              case "go south":
+                alert("");
+                gate();
+                break;
+              case "go west":
+                alert("");
+                wall2();
+                break;
+              case "check":
+                alert("Check what?");
+                entry();
+                break;
+              case "take":
+                alert("Take what?");
+                entry();
+                break;
+              case "interact":
+                alert("Interact with what?");
+                entry();
+                break;
+              case "attack":
+                alert("Attack what?");
+                entry();
+                break;
+              case "run":
+                alert("");
+                entry();
+                break;
+              case "use":
+                alert("Use what?");
+                entry();
+                break;
+              case "inventory":
+                alert(inventory);
+                entry();
+                break;
+              case "i":
+                alert(inventory);
+                entry();
+                break;
+              case "help":
+                alert("The objective of Forgotten Shores is to survive. In this game there are several commands that can be used to make that possible. Provided below are a list of the commands that can be used:\n\n"
+                     + "go north\n\n"
+                     + "go east\n\n"
+                     + "go south\n\n"
+                     + "go west\n\n"
+                     + "check ****: This allows you to check objects.\n\n"
+                     + "take ****: This puts objects in your inventory.\n\n"
+                     + "interact with ****: This allows interaction with objects.\n\n"
+                     + "use ****: This allows you to use objects in your inventory.\n\n"
+                     + "run: This allows you to run from enemies.\n\n"
+                     + "attack ****: This allows you to attack enemies.\n\n"
+                     + "inventory or i: This allows you to check your inventory.\n\n"
+                     + "There are no other commands.");
+                entry();
+                break;   
+              default:
+                alert("That isn't possible. Please clarify your request.");
+                entry();
+            }
+          }
+          
+          
+          function castleDoor() {
+            var frontDoor = prompt("\n\nWhat do you do?").toLowerCase();
+            
+            switch (frontDoor) {
+              case "go north":
+                alert("");
+                foyer();
+                break;
+              case "go east":
+                alert("");
+                castleDoor();
+                break;
+              case "go south":
+                alert("");
+                courtyard();
+                break;
+              case "go west":
+                alert("");
+                castleDoor();
+                break;
+              case "check":
+                alert("Check what?");
+                castleDoor();
+                break;
+              case "take":
+                alert("Take what?");
+                castleDoor();
+                break;
+              case "interact":
+                alert("Interact with what?");
+                castleDoor();
+                break;
+              case "attack":
+                alert("Attack what?");
+                castleDoor();
+                break;
+              case "run":
+                alert("");
+                castleDoor();
+                break;
+              case "use":
+                alert("Use what?");
+                castleDoor();
+                break;
+              case "inventory":
+                alert(inventory);
+                castleDoor();
+                break;
+              case "i":
+                alert(inventory);
+                castleDoor();
+                break;
+              case "help":
+                alert("The objective of Forgotten Shores is to survive. In this game there are several commands that can be used to make that possible. Provided below are a list of the commands that can be used:\n\n"
+                     + "go north\n\n"
+                     + "go east\n\n"
+                     + "go south\n\n"
+                     + "go west\n\n"
+                     + "check ****: This allows you to check objects.\n\n"
+                     + "take ****: This puts objects in your inventory.\n\n"
+                     + "interact with ****: This allows interaction with objects.\n\n"
+                     + "use ****: This allows you to use objects in your inventory.\n\n"
+                     + "run: This allows you to run from enemies.\n\n"
+                     + "attack ****: This allows you to attack enemies.\n\n"
+                     + "inventory or i: This allows you to check your inventory.\n\n"
+                     + "There are no other commands.");
+                castleDoor();
+                break;   
+              default:
+                alert("That isn't possible. Please clarify your request.");
+                castleDoor();
+            }
+          }
+          
+          
+          function foyer() {
+            var frontRoom = prompt("\n\nWhat do you do?").toLowerCase();
+            
+            switch (frontRoom) {
+              case "go north":
+                alert("");
+                stairs();
+                break;
+              case "go east":
+                alert("");
+                dining();
+                break;
+              case "go south":
+                alert("");
+                castleDoor();
+                break;
+              case "go west":
+                alert("");
+                ballroom();
+                break;
+              case "check":
+                alert("Check what?");
+                foyer();
+                break;
+              case "take":
+                alert("Take what?");
+                foyer();
+                break;
+              case "interact":
+                alert("Interact with what?");
+                foyer();
+                break;
+              case "attack":
+                alert("Attack what?");
+                foyer();
+                break;
+              case "run":
+                alert("");
+                foyer();
+                break;
+              case "use":
+                alert("Use what?");
+                foyer();
+                break;
+              case "inventory":
+                alert(inventory);
+                foyer();
+                break;
+              case "i":
+                alert(inventory);
+                foyer();
+                break;
+              case "help":
+                alert("The objective of Forgotten Shores is to survive. In this game there are several commands that can be used to make that possible. Provided below are a list of the commands that can be used:\n\n"
+                     + "go north\n\n"
+                     + "go east\n\n"
+                     + "go south\n\n"
+                     + "go west\n\n"
+                     + "check ****: This allows you to check objects.\n\n"
+                     + "take ****: This puts objects in your inventory.\n\n"
+                     + "interact with ****: This allows interaction with objects.\n\n"
+                     + "use ****: This allows you to use objects in your inventory.\n\n"
+                     + "run: This allows you to run from enemies.\n\n"
+                     + "attack ****: This allows you to attack enemies.\n\n"
+                     + "inventory or i: This allows you to check your inventory.\n\n"
+                     + "There are no other commands.");
+                foyer();
+                break;   
+              default:
+                alert("That isn't possible. Please clarify your request.");
+                foyer();
+            }
+          }
+          
+          
+          function stairs() {
+            var stairCase = prompt("\n\nWhat do you do?").toLowerCase();
+            
+            switch (stairCase) {
+              case "go north":
+                alert("");
+                antechamber();
+                break;
+              case "go east":
+                alert("");
+                eastWing();
+                break;
+              case "go south":
+                alert("");
+                foyer();
+                break;
+              case "go west":
+                alert("");
+                westWing();
+                break;
+              case "check":
+                alert("Check what?");
+                stairs();
+                break;
+              case "take":
+                alert("Take what?");
+                stairs();
+                break;
+              case "interact":
+                alert("Interact with what?");
+                stairs();
+                break;
+              case "attack":
+                alert("Attack what?");
+                stairs();
+                break;
+              case "run":
+                alert("");
+                stairs();
+                break;
+              case "use":
+                alert("Use what?");
+                stairs();
+                break;
+              case "inventory":
+                alert(inventory);
+                stairs();
+                break;
+              case "i":
+                alert(inventory);
+                stairs();
+                break;
+              case "help":
+                alert("The objective of Forgotten Shores is to survive. In this game there are several commands that can be used to make that possible. Provided below are a list of the commands that can be used:\n\n"
+                     + "go north\n\n"
+                     + "go east\n\n"
+                     + "go south\n\n"
+                     + "go west\n\n"
+                     + "check ****: This allows you to check objects.\n\n"
+                     + "take ****: This puts objects in your inventory.\n\n"
+                     + "interact with ****: This allows interaction with objects.\n\n"
+                     + "use ****: This allows you to use objects in your inventory.\n\n"
+                     + "run: This allows you to run from enemies.\n\n"
+                     + "attack ****: This allows you to attack enemies.\n\n"
+                     + "inventory or i: This allows you to check your inventory.\n\n"
+                     + "There are no other commands.");
+                stairs();
+                break;   
+              default:
+                alert("That isn't possible. Please clarify your request.");
+                stairs();
+            }
+          }
+          
+          
+          
+          //------------------------------------- End of Castle -----------------------------------------
+          //------------------------------------ Start of Finale ----------------------------------------
+          
+          
+          
+          function antechamber() {
+            var ante = prompt("\n\nWhat do you do?").toLowerCase();
+            
+            switch (ante) {
+              case "go north":
+                alert("");
+                throne();
+                break;
+              case "go east":
+                alert("");
+                antechamber();
+                break;
+              case "go south":
+                alert("");
+                stairs();
+                break;
+              case "go west":
+                alert("");
+                antechamber();
+                break;
+              case "check":
+                alert("Check what?");
+                antechamber();
+                break;
+              case "take":
+                alert("Take what?");
+                antechamber();
+                break;
+              case "interact":
+                alert("Interact with what?");
+                antechamber();
+                break;
+              case "attack":
+                alert("Attack what?");
+                antechamber();
+                break;
+              case "run":
+                alert("");
+                antechamber();
+                break;
+              case "use":
+                alert("Use what?");
+                antechamber();
+                break;
+              case "inventory":
+                alert(inventory);
+                antechamber();
+                break;
+              case "i":
+                alert(inventory);
+                antechamber();
+                break;
+              case "help":
+                alert("The objective of Forgotten Shores is to survive. In this game there are several commands that can be used to make that possible. Provided below are a list of the commands that can be used:\n\n"
+                     + "go north\n\n"
+                     + "go east\n\n"
+                     + "go south\n\n"
+                     + "go west\n\n"
+                     + "check ****: This allows you to check objects.\n\n"
+                     + "take ****: This puts objects in your inventory.\n\n"
+                     + "interact with ****: This allows interaction with objects.\n\n"
+                     + "use ****: This allows you to use objects in your inventory.\n\n"
+                     + "run: This allows you to run from enemies.\n\n"
+                     + "attack ****: This allows you to attack enemies.\n\n"
+                     + "inventory or i: This allows you to check your inventory.\n\n"
+                     + "There are no other commands.");
+                antechamber();
+                break;   
+              default:
+                alert("That isn't possible. Please clarify your request.");
+                antechamber();
+            }
+          }
+          
+          
+          function centerTower() {
+            var tower1 = prompt("\n\nWhat do you do?").toLowerCase();
+            
+            switch (tower1) {
+              case "go north":
+                alert("");
+                portal();
+                break;
+              case "go east":
+                alert("");
+                centerTower();
+                break;
+              case "go south":
+                alert("");
+                throne();
+                break;
+              case "go west":
+                alert("");
+                centerTower();
+                break;
+              case "check":
+                alert("Check what?");
+                centerTower();
+                break;
+              case "take":
+                alert("Take what?");
+                centerTower();
+                break;
+              case "interact":
+                alert("Interact with what?");
+                centerTower();
+                break;
+              case "attack":
+                alert("Attack what?");
+                centerTower();
+                break;
+              case "run":
+                alert("");
+                centerTower();
+                break;
+              case "use":
+                alert("Use what?");
+                centerTower();
+                break;
+              case "inventory":
+                alert(inventory);
+                centerTower();
+                break;
+              case "i":
+                alert(inventory);
+                centerTower();
+                break;
+              case "help":
+                alert("The objective of Forgotten Shores is to survive. In this game there are several commands that can be used to make that possible. Provided below are a list of the commands that can be used:\n\n"
+                     + "go north\n\n"
+                     + "go east\n\n"
+                     + "go south\n\n"
+                     + "go west\n\n"
+                     + "check ****: This allows you to check objects.\n\n"
+                     + "take ****: This puts objects in your inventory.\n\n"
+                     + "interact with ****: This allows interaction with objects.\n\n"
+                     + "use ****: This allows you to use objects in your inventory.\n\n"
+                     + "run: This allows you to run from enemies.\n\n"
+                     + "attack ****: This allows you to attack enemies.\n\n"
+                     + "inventory or i: This allows you to check your inventory.\n\n"
+                     + "There are no other commands.");
+                centerTower();
+                break;   
+              default:
+                alert("That isn't possible. Please clarify your request.");
+                centerTower();
+            }
+          }
+          
+          
+          function portal() {
+            var end = prompt("\n\nWhat do you do?").toLowerCase();
+            
+            switch (end) {
+              case "go north":
+                alert("");
+                success();
+                break;
+              case "go east":
+                alert("");
+                portal();
+                break;
+              case "go south":
+                alert("");
+                centerTower();
+                break;
+              case "go west":
+                alert("");
+                portal();
+                break;
+              case "check":
+                alert("Check what?");
+                portal();
+                break;
+              case "take":
+                alert("Take what?");
+                portal();
+                break;
+              case "interact":
+                alert("Interact with what?");
+                portal();
+                break;
+              case "attack":
+                alert("Attack what?");
+                portal();
+                break;
+              case "run":
+                alert("");
+                portal();
+                break;
+              case "use":
+                alert("Use what?");
+                portal();
+                break;
+              case "inventory":
+                alert(inventory);
+                portal();
+                break;
+              case "i":
+                alert(inventory);
+                portal();
+                break;
+              case "help":
+                alert("The objective of Forgotten Shores is to survive. In this game there are several commands that can be used to make that possible. Provided below are a list of the commands that can be used:\n\n"
+                     + "go north\n\n"
+                     + "go east\n\n"
+                     + "go south\n\n"
+                     + "go west\n\n"
+                     + "check ****: This allows you to check objects.\n\n"
+                     + "take ****: This puts objects in your inventory.\n\n"
+                     + "interact with ****: This allows interaction with objects.\n\n"
+                     + "use ****: This allows you to use objects in your inventory.\n\n"
+                     + "run: This allows you to run from enemies.\n\n"
+                     + "attack ****: This allows you to attack enemies.\n\n"
+                     + "inventory or i: This allows you to check your inventory.\n\n"
+                     + "There are no other commands.");
+                portal();
+                break;   
+              default:
+                alert("That isn't possible. Please clarify your request.");
+                portal();
+            }
+          }
+          
+          
+          //----------------------------------- End of Finale -------------------------------------
+          //------------------------------------ End of Game --------------------------------------
+          
+          
+          var findEnemy = function(name, list){
+            for(var i = 0; i < list.length; i++){
+              if(list[i] === name){
+                return list[i];
+              }
+            }
+          }
+          
+          var findWeapon = function(name, list){
+            for(var i = 0; i < list.length; i++){
+              if(list[i] === name){
+                return list[i];
+              }
+            }
+          }
+          
+          var fight = function(weapon, enemy, player){
+            while(enemy.status != "dead" || player.health != 0){
+              if(enemy.weakness === weapon){
+                enemy.status = "dead";
+                alert("You have slain the " + enemy + "!");
+              } else if(enemy.hurt === weapon){
+                enemy.health -= weapon.damage;
+                alert("You hit " + enemy + " with your " + weapon + " for " + weapon.damage + "damage!");
+                if(enemy.health <= 0){
+                  enemy.status = "dead";
+                  alert("You have slain the " + enemy + "!");
+                } else {
+                  var damage = enemy.damage - player.defense;
+                  if(damage <= 0) {
+                    damage = 0;
+                  }
+                  player.health -= damage;
+                  alert("The " + enemy + " attacks " + playerName + "")
+                  if(player.health <= 0){
+                    death(enemy);
+                  }
+                }
+              }else if (enemy.hurt != weapon {
+                alert("You can't hurt " + enemy + "with that.");
+                break;
+              }
+            }
+          }
+          
+          
+          
+        </script>
+
+</body>
+</html>
+
+<!-- Test code -->
+
+<!-- 
+
+          function () {
+            var  = prompt("\n\nWhat do you do?").toLowerCase();
+            
+            switch () {
+              case "go north":
+                alert("");
+                ();
+                break;
+              case "go east":
+                alert("");
+                ();
+                break;
+              case "go south":
+                alert("");
+                ();
+                break;
+              case "go west":
+                alert("");
+                ();
+                break;
+              case "check":
+                alert("Check what?");
+                ();
+                break;
+              case "take":
+                alert("Take what?");
+                ();
+                break;
+              case "interact":
+                alert("Interact with what?");
+                ();
+                break;
+              case "attack":
+                alert("Attack what?");
+                ();
+                break;
+              case "run":
+                alert("");
+                ();
+                break;
+              case "use":
+                alert("Use what?");
+                ();
+                break;
+              case "inventory":
+                alert(inventory);
+                ();
+                break;
+              case "i":
+                alert(inventory);
+                ();
+                break;
+              case "help":
+                alert("The objective of Forgotten Shores is to survive. In this game there are several commands that can be used to make that possible. Provided below are a list of the commands that can be used:\n\n"
+                     + "go north\n\n"
+                     + "go east\n\n"
+                     + "go south\n\n"
+                     + "go west\n\n"
+                     + "check ****: This allows you to check objects.\n\n"
+                     + "take ****: This puts objects in your inventory.\n\n"
+                     + "interact with ****: This allows interaction with objects.\n\n"
+                     + "use ****: This allows you to use objects in your inventory.\n\n"
+                     + "run: This allows you to run from enemies.\n\n"
+                     + "attack ****: This allows you to attack enemies.\n\n"
+                     + "inventory or i: This allows you to check your inventory.\n\n"
+                     + "There are no other commands.");
+                ();
+                break;   
+              default:
+                alert("That isn't possible. Please clarify your request.");
+                ();
+            }
+          }
+
+-->
